@@ -3,49 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XAEROVA — Autonomous Drone Infrastructure</title>
-  <meta name="description" content="Be among the first to discover XAEROVA. Get early access and updates about our autonomous drone system.">
+  <meta name="theme-color" content="#01060b">
+  <title>SkyMind Dock — Coming Soon | XAEROVA</title>
+  <meta name="description" content="SkyMind Dock. Coming soon. Autonomous drone infrastructure by XAEROVA.">
   <link rel="canonical" href="https://xaerova.com/">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="XAEROVA">
-  <meta property="og:title" content="XAEROVA — Autonomous Drone Infrastructure">
-  <meta property="og:description" content="Be among the first. Get exclusive updates and early access to XAEROVA.">
+  <meta property="og:title" content="SkyMind Dock — Coming Soon">
+  <meta property="og:description" content="SkyMind Dock. Coming soon. 24/7.">
   <meta property="og:url" content="https://xaerova.com/">
-  <meta property="og:image" content="https://xaerova.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/png" href="Favicon 3.PNG">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --blue: #078cff;
-      --cyan: #00c8ff;
-      --white: #f7fbff;
-      --muted: rgba(235,245,255,.72);
-      --panel: rgba(0,93,145,.78);
-    }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; background: #020811; }
+    html { background: #01060b; }
     body {
-      isolation: isolate;
       margin: 0;
+      min-width: 280px;
       min-height: 100vh;
-      color: var(--white);
-      background: transparent;
-      font-family: "Rajdhani", sans-serif;
+      min-height: 100svh;
       overflow-x: hidden;
+      isolation: isolate;
+      color: #f2faff;
+      background: #01060b;
+      font-family: "Rajdhani", Arial, sans-serif;
     }
-    /* Procedural orbital Earth background: no image or external library. */
     #earth-background {
       position: fixed;
       inset: 0;
       z-index: 0;
       overflow: hidden;
       pointer-events: none;
-      background: #020911;
+      background: #01060b;
       contain: strict;
     }
     #xaerova-earth {
@@ -55,679 +44,92 @@
       width: 100%;
       height: 100%;
     }
-
-
-    main { position: relative; z-index: 1; }
-    .topbar { position: relative; z-index: 5; }
-
-    a { color: inherit; text-decoration: none; }
-    .topbar {
-      height: 62px;
-      width: 100%;
-      padding: 0 clamp(18px, 4vw, 58px);
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 24px;
-      background: rgba(0,0,0,.88);
-      border-bottom: 1px solid rgba(255,255,255,.12);
+    .hero {
       position: relative;
-      z-index: 5;
-    }
-    .brand { display: flex; align-items: center; width: fit-content; }
-    .brand img { width: 112px; height: auto; max-height: 34px; object-fit: contain; }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: clamp(16px, 3vw, 44px);
-      white-space: nowrap;
-      font-family: "Orbitron", sans-serif;
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: .32em;
-      color: rgba(255,255,255,.8);
-    }
-    .nav-links a { transition: color .2s ease; }
-    .nav-links a:hover, .dropdown-trigger:hover { color: var(--cyan); }
-    .dropdown { position: relative; }
-    .dropdown-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 10px 0;
-      border: 0;
-      color: inherit;
-      background: transparent;
-      cursor: pointer;
-      font: inherit;
-      letter-spacing: inherit;
-    }
-    .dropdown-arrow { font-size: 13px; transition: transform .2s ease; }
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 220px;
-      padding: 8px;
-      background: rgba(2, 12, 25, .97);
-      border: 1px solid rgba(0, 150, 255, .42);
-      border-radius: 5px;
-      box-shadow: 0 12px 30px rgba(0,0,0,.35);
-      backdrop-filter: blur(14px);
-      z-index: 20;
-      letter-spacing: .08em;
-      white-space: normal;
-    }
-    .dropdown-menu a {
-      display: block;
-      padding: 12px 13px;
-      color: rgba(255,255,255,.9);
-      font: 600 12px "Rajdhani", sans-serif;
-      letter-spacing: .08em;
-    }
-    .dropdown-menu a:hover {
-      color: var(--cyan);
-      background: rgba(0,140,255,.14);
-    }
-    .dropdown.open .dropdown-menu { display: block; }
-    .dropdown.open .dropdown-arrow { transform: rotate(180deg); }
-    @media (hover: hover) and (pointer: fine) {
-      .dropdown:hover .dropdown-menu,
-      .dropdown:focus-within .dropdown-menu { display: block; }
-      .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
-    }
-    .right-tools { display: flex; align-items: center; justify-content: flex-end; gap: 14px; }
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 30px;
-      height: 30px;
-      color: rgba(255,255,255,.9);
-      transition: color .2s ease, transform .2s ease;
-    }
-    .social-link:hover { color: var(--cyan); transform: translateY(-2px); }
-    .social-link svg { display: block; width: 17px; height: 17px; fill: currentColor; }
-    .language-switch {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid rgba(255,255,255,.25);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-    .language-switch button {
-      border: 0;
-      min-width: 42px;
-      padding: 8px 10px;
-      color: rgba(255,255,255,.72);
-      background: transparent;
-      cursor: pointer;
-      font: 700 9px "Rajdhani", sans-serif;
-      letter-spacing: .12em;
-    }
-    .language-switch button.active { color: white; background: var(--blue); }
-    main {
-      width: min(1120px, 100%);
-      min-height: calc(100vh - 62px);
-      margin: 0 auto;
-      padding: clamp(35px, 5.2vh, 62px) 24px 30px;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100svh;
+      padding: 24vh 24px 40px;
       text-align: center;
     }
     h1 {
-      margin: 0 0 clamp(12px, 2.2vh, 25px);
-      font: 800 clamp(42px, 8.4vw, 104px)/.98 "Orbitron", sans-serif;
-      letter-spacing: -.045em;
-      text-transform: uppercase;
-      color: #fff;
-      text-shadow: 0 0 12px rgba(0,153,255,.35), 0 0 35px rgba(0,130,255,.18);
+      max-width: 100%;
+      margin: 0;
+      font-family: "Orbitron", "Arial Black", Arial, sans-serif;
+      font-size: clamp(29px, 6.4vw, 88px);
+      font-weight: 600;
+      line-height: 1.18;
+      letter-spacing: .075em;
+      text-indent: .075em;
+      text-wrap: balance;
+      text-shadow: 0 3px 28px #0009, 0 0 36px #4dbaff22;
     }
-    .product-visual {
-      width: min(820px, 94%);
-      height: clamp(190px, 34vh, 340px);
+    .coming-soon {
+      margin: 22px 0 0;
+      color: #d9eaf3;
+      font-size: clamp(14px, 1.55vw, 21px);
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: .48em;
+      text-indent: .48em;
+    }
+    .availability {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto clamp(20px, 3vh, 30px);
-      position: relative;
-    }
-    .product-visual::before {
-      content: "";
-      position: absolute;
-      width: 72%;
-      height: 36%;
-      bottom: 12%;
-      left: 14%;
-      background: rgba(0,145,255,.23);
-      filter: blur(48px);
-      border-radius: 50%;
-    }
-    .product-visual img {
-      position: relative;
-      max-width: 100%;
-      max-height: 100%;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 16px 28px rgba(0,0,0,.55));
-    }
-    .specs {
-      width: min(800px, 100%);
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin: 0 auto clamp(20px, 3vh, 30px);
-    }
-    .spec strong {
-      display: block;
-      color: var(--blue);
-      font: 600 clamp(22px, 3vw, 38px)/1 "Rajdhani", sans-serif;
-      letter-spacing: .02em;
-      text-shadow: 0 0 14px rgba(0,139,255,.2);
-    }
-    .spec span {
-      display: block;
-      margin-top: 4px;
-      color: rgba(255,255,255,.85);
-      font-size: clamp(11px, 1.2vw, 14px);
+      gap: 10px;
+      margin: 24px 0 0;
+      color: #9ec5d2;
+      font-size: 14px;
       font-weight: 500;
-      line-height: 1.15;
+      line-height: 1.5;
+      letter-spacing: .28em;
     }
-    .signup { width: min(680px, 100%); }
-    .signup h2 {
-      margin: 0 0 14px;
-      color: var(--blue);
-      font: 500 clamp(21px, 2.6vw, 30px)/1.2 "Rajdhani", sans-serif;
-      letter-spacing: .035em;
-      text-transform: uppercase;
-      text-shadow: 0 0 14px rgba(0,139,255,.22);
+    .availability::before {
+      content: "";
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #b7f0ff;
+      box-shadow: 0 0 10px #53d9ff99;
+      animation: signal-breathe 3.8s ease-in-out infinite;
     }
-    .signup-form {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      align-items: center;
-      gap: 7px 12px;
-      padding: 18px 24px;
-      background: var(--panel);
-      border: 1px solid rgba(76,190,255,.28);
-      border-radius: 20px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.08);
-      backdrop-filter: blur(12px);
-      text-align: left;
+    @keyframes signal-breathe {
+      0%, 100% { opacity: .4; box-shadow: 0 0 4px #53d9ff44; }
+      50% { opacity: 1; box-shadow: 0 0 13px #53d9ffbb; }
     }
-    .signup-form label {
-      color: rgba(255,255,255,.8);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: .03em;
+    @media (max-width: 600px) {
+      .hero { padding: 25vh 18px 30px; }
+      h1 { font-size: clamp(26px, 7.5vw, 44px); letter-spacing: .035em; text-indent: .035em; }
+      .coming-soon { margin-top: 18px; font-size: 14px; letter-spacing: .38em; text-indent: .38em; }
+      .availability { margin-top: 20px; font-size: 13px; }
     }
-    .signup-form input {
-      width: 100%;
-      min-width: 0;
-      height: 31px;
-      padding: 5px 10px;
-      border: 1px solid rgba(255,255,255,.3);
-      border-radius: 2px;
-      outline: none;
-      color: #111827;
-      background: rgba(255,255,255,.97);
-      font: 500 14px "Rajdhani", sans-serif;
-    }
-    .signup-form input:focus { border-color: var(--cyan); box-shadow: 0 0 0 2px rgba(0,200,255,.2); }
-    .submit-button {
-      grid-column: 2;
-      min-height: 34px;
-      border: 0;
-      border-radius: 2px;
-      color: #fff;
-      background: #087bbd;
-      cursor: pointer;
-      font: 700 11px "Rajdhani", sans-serif;
-      letter-spacing: .12em;
-      transition: background .2s, transform .2s;
-    }
-    .submit-button:hover { background: #0799ed; transform: translateY(-1px); }
-    .submit-button:disabled { opacity: .65; cursor: wait; }
-    .form-message {
-      grid-column: 1 / -1;
-      margin: 4px 0 0;
-      text-align: center;
-      font-size: 13px;
-      color: #fff;
-    }
-    .launch {
-      margin-top: clamp(22px, 3.5vh, 34px);
-    }
-    .launch h2 {
-      margin: 0;
-      color: var(--blue);
-      font: 500 clamp(22px, 2.8vw, 32px)/1.15 "Rajdhani", sans-serif;
-      text-transform: uppercase;
-      text-shadow: 0 0 15px rgba(0,139,255,.22);
-    }
-    .launch p {
-      margin: 0 auto;
-      max-width: 620px;
-      color: rgba(255,255,255,.82);
-      font-size: 12px;
-      line-height: 1.35;
-    }
-    .launch sup { font-size: .55em; vertical-align: super; }
-    @media (min-width: 900px) and (min-height: 850px) {
-      main { padding-top: 55px; }
-      .product-visual { height: 350px; }
-    }
-    .mobile-menu-toggle { display: none; }
-
-    :focus-visible {
-      outline: 2px solid var(--cyan);
-      outline-offset: 3px;
-    }
-
-    @media (max-width: 760px) {
-      .topbar {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        flex-wrap: nowrap;
-        height: 64px;
-        min-height: 64px;
-        padding: 0 15px;
-        gap: 12px;
-      }
-      .brand { flex: 0 0 auto; margin-right: 4px; }
-      .brand img { width: 96px; max-height: 32px; }
-      .mobile-menu-toggle {
-        display: flex;
-        flex: 0 0 40px;
-        width: 40px;
-        height: 40px;
-        padding: 9px 7px;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
-        border: 1px solid rgba(0,153,255,.45);
-        border-radius: 5px;
-        background: rgba(0,100,180,.12);
-        cursor: pointer;
-      }
-      .mobile-menu-toggle span {
-        display: block;
-        width: 21px;
-        height: 2px;
-        border-radius: 2px;
-        background: #fff;
-        transition: transform .2s ease, opacity .2s ease;
-      }
-      .mobile-menu-toggle.active span:first-child { transform: translateY(7px) rotate(45deg); }
-      .mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
-      .mobile-menu-toggle.active span:last-child { transform: translateY(-7px) rotate(-45deg); }
-      .right-tools { flex: 0 0 auto; margin-left: auto; }
-      .language-switch button { min-width: 38px; padding: 9px 8px; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 64px;
-        left: 0;
-        right: 0;
-        width: 100%;
-        padding: 18px 15px;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: flex-start;
-        gap: 0;
-        background: rgba(2,10,22,.98);
-        border-bottom: 1px solid rgba(0,153,255,.35);
-        box-shadow: 0 12px 25px rgba(0,0,0,.4);
-        font-size: 10px;
-        letter-spacing: .18em;
-      }
-      .nav-links.mobile-open { display: flex; }
-      .nav-links > a, .nav-links .dropdown-trigger {
-        display: flex;
-        width: 100%;
-        padding: 15px 10px;
-        justify-content: space-between;
-        border-bottom: 1px solid rgba(255,255,255,.08);
-      }
-      .dropdown { width: 100%; }
-      .dropdown-menu {
-        position: static;
-        width: 100%;
-        min-width: 0;
-        transform: none;
-        margin: 0;
-        padding: 5px 10px;
-        border: 0;
-        border-radius: 0;
-        background: rgba(0,100,180,.12);
-        box-shadow: none;
-      }
-      main {
-        min-height: calc(100vh - 64px);
-        padding: 28px 20px calc(34px + env(safe-area-inset-bottom));
-      }
-      h1 {
-        width: 100%; max-width: 540px; margin: 0 auto 14px;
-        font-size: clamp(25px, 6.5vw, 42px); line-height: 1.15;
-        letter-spacing: -.035em; text-wrap: balance;
-      }
-      .product-visual {
-        width: 90%; max-width: 430px; height: clamp(125px, 29vw, 195px);
-        margin: 0 auto 18px;
-      }
-      .product-visual img { width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 9px 18px rgba(0,0,0,.5)); }
-      .product-visual::before { width: 65%; height: 30%; left: 17.5%; bottom: 5%; filter: blur(30px); }
-      .specs {
-        width: 100%; max-width: 430px;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px; margin: 0 auto 22px;
-      }
-      .spec {
-        min-width: 0; text-align: center;
-        padding: 11px 8px 10px;
-        border: 1px solid rgba(91,184,255,.17);
-        border-radius: 8px;
-        background: rgba(0,32,62,.42);
-        backdrop-filter: blur(5px);
-      }
-      .spec strong { font-size: clamp(22px,6vw,28px); line-height: 1.1; }
-      .spec span { font-size: clamp(10px,2.8vw,12px); line-height: 1.25; overflow-wrap: break-word; }
-      .signup { width: 100%; max-width: 480px; }
-      .signup h2 { font-size: 23px; margin-bottom: 12px; }
-      .signup-form {
-        width: 100%; grid-template-columns: 1fr; gap: 7px;
-        padding: 18px; border-radius: 15px;
-      }
-      .signup-form label { margin-top: 7px; font-size: 13px; }
-      .signup-form input { width: 100%; height: 42px; padding: 8px 12px; font-size: 16px; border-radius: 4px; }
-      .submit-button { grid-column: 1; width: 100%; min-height: 44px; margin-top: 12px; font-size: 12px; border-radius: 4px; }
-      .form-message { grid-column: 1; font-size: 13px; }
-      .launch { width: 100%; margin-top: 24px; }
-      .launch h2 { font-size: clamp(23px,6vw,30px); letter-spacing: .04em; }
-      .launch p { max-width: 400px; padding: 0 8px; font-size: 13px; line-height: 1.5; }
-    }
-
-    @media (max-width: 390px) {
-      main { padding: 30px 15px 26px; }
-      h1 { font-size: clamp(23px,6.3vw,29px); }
-      .product-visual { width: 88%; height: 125px; margin-bottom: 18px; }
-      .specs { gap: 7px; }
-      .spec { padding: 9px 6px; }
-      .spec strong { font-size: 20px; }
-      .spec span { font-size: 9px; }
-      .signup-form { padding: 16px; }
-    }
-
-    @media (max-width: 340px) {
-      .product-visual { width: 86%; height: 112px; }
-      .spec strong { font-size: 18px; }
-      .spec span { font-size: 8px; }
-      .brand img { width: 82px; }
-      .topbar { padding: 0 10px; gap: 8px; }
-    }
-
-    @media (max-width: 900px) and (max-height: 500px) {
-      main { padding-top: 20px; }
-      .product-visual { height: 130px; width: 55%; }
-      h1 { font-size: 32px; }
+    @media (max-height: 500px) and (min-width: 600px) {
+      .hero { padding-top: 14vh; }
+      h1 { font-size: 42px; }
+      .coming-soon { margin-top: 13px; font-size: 14px; }
+      .availability { margin-top: 12px; font-size: 12px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+      .availability::before { animation: none; }
     }
   </style>
 </head>
-
 <body>
-  <!-- The animated orbital scene is generated entirely in code. -->
   <div id="earth-background" aria-hidden="true">
     <canvas id="xaerova-earth"></canvas>
   </div>
-
-
-  <header class="topbar">
-    <a class="brand" href="#" aria-label="XAEROVA home">
-      <img src="no bg.png" alt="XAEROVA">
-    </a>
-
-    <nav class="nav-links" id="mainNavigation" aria-label="Main navigation">
-      <a href="mailto:info@xaerova.com?subject=XAEROVA%20Investor%20Enquiry" data-i18n="nav-investors">INVESTORS</a>
-      <a href="mailto:info@xaerova.com?subject=XAEROVA%20Press%20Enquiry" data-i18n="nav-press">PRESS</a>
-      <div class="dropdown" id="useCasesDropdown">
-        <button class="dropdown-trigger" type="button" id="useCasesButton"
-          aria-expanded="false" aria-controls="useCasesMenu">
-          <span data-i18n="nav-usecases">USE CASES</span>
-          <span class="dropdown-arrow" aria-hidden="true">⌄</span>
-        </button>
-        <div class="dropdown-menu" id="useCasesMenu">
-          <a href="#early-access" data-i18n="nav-agriculture">Agriculture</a>
-          <a href="#early-access" data-i18n="nav-security">Security &amp; Defense</a>
-          <a href="#early-access" data-i18n="nav-nature">Nature Protection</a>
-        </div>
-      </div>
-    </nav>
-
-    <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button"
-      aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNavigation">
-      <span></span><span></span><span></span>
-    </button>
-
-    <div class="right-tools">
-      <div class="language-switch" role="group" aria-label="Select language">
-        <button type="button" id="langENG" class="active" aria-pressed="true" onclick="setLanguage('en')">ENG</button>
-        <button type="button" id="langFR" aria-pressed="false" onclick="setLanguage('fr')">FR</button>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <h1 data-i18n="headline">SKYMIND DOCK</h1>
-
-    <div class="product-visual">
-      <img
-        src="IMG_8199.JPG.jpg"
-        alt="XAEROVA SkyMind autonomous drone docking station"
-      >
-    </div>
-
-    <section class="specs" id="specifications" aria-label="Product specifications">
-      <div class="spec"><strong>4K</strong><span data-i18n="spec-camera">Camera type</span></div>
-      <div class="spec"><strong>7Km</strong><span data-i18n="spec-range">Communication range</span></div>
-      <div class="spec"><strong>72kph</strong><span data-i18n="spec-speed">Maximum speed</span></div>
-      <div class="spec"><strong>30MIN</strong><span data-i18n="spec-flight">Minimum flight time</span></div>
-    </section>
-
-    <section class="signup" id="early-access">
-      <h2 data-i18n="signup-title">BE AMONG THE FIRST</h2>
-
-      <!-- FormSubmit sends registrations to info@xaerova.com.
-           The first test submission may trigger an email verification request. -->
-      <form class="signup-form" id="earlyAccessForm" action="https://formsubmit.co/info@xaerova.com" method="POST">
-        <input type="hidden" name="_subject" value="New XAEROVA early-access registration">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://xaerova.com/?submitted=1">
-        <input type="hidden" name="_autoresponse" value="Hello! Thank you for your interest in XAEROVA. We have received your early-access registration and will keep you updated on our launch, product developments and upcoming opportunities. The XAEROVA Team">
-        <input type="hidden" name="_replyto" id="replyToEmail" value="">
-        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-
-        <label for="firstName" data-i18n="first-name">First name</label>
-        <input id="firstName" name="First name" type="text" autocomplete="given-name" required>
-
-        <label for="lastName" data-i18n="last-name">Last name</label>
-        <input id="lastName" name="Last name" type="text" autocomplete="family-name" required>
-
-        <label for="email" data-i18n="email">Email address</label>
-        <input id="email" name="Email" type="email" autocomplete="email" required>
-
-        <label for="country" data-i18n="country">Country</label>
-        <input id="country" name="Country" type="text" autocomplete="country-name" required>
-
-        <button class="submit-button" id="submitButton" type="submit" data-i18n="submit">GET EARLY ACCESS →</button>
-        <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-
-    <section class="launch" id="launch">
-      <h2 data-i18n="launch-title">COMING Q1 2027</h2>
-      <p data-i18n="launch-copy">Get exclusive updates, early access and information about upcoming pre-orders.</p>
-    </section>
+  <main class="hero">
+    <h1>SKYMIND DOCK</h1>
+    <p class="coming-soon">COMING SOON</p>
+    <p class="availability">24/7</p>
   </main>
-
   <script>
-    const translations = {
-      en: {
-        "nav-investors": "INVESTORS",
-        "nav-press": "PRESS",
-        "nav-usecases": "USE CASES",
-        "nav-agriculture": "AGRICULTURE",
-        "nav-security": "SECURITY & DEFENSE",
-        "nav-nature": "NATURE PROTECTION",
-        "headline": "SKYMIND DOCK",
-        "spec-camera": "Camera type",
-        "spec-range": "Communication range",
-        "spec-speed": "Maximum speed",
-        "spec-flight": "Minimum flight time",
-        "signup-title": "BE AMONG THE FIRST",
-        "first-name": "First name",
-        "last-name": "Last name",
-        "email": "Email address",
-        "country": "Country",
-        "submit": "GET EARLY ACCESS →",
-        "sending": "SENDING…",
-        "success": "Thank you. Your early-access request has been received.",
-        "error": "Something went wrong. Please try again or email info@xaerova.com.",
-        "launch-title": "COMING Q1 2027",
-        "launch-copy": "Get exclusive updates, early access and information about upcoming pre-orders."
-      },
-      fr: {
-        "nav-investors": "INVESTISSEURS",
-        "nav-press": "PRESSE",
-        "nav-usecases": "APPLICATIONS",
-        "nav-agriculture": "AGRICULTURE",
-        "nav-security": "SÉCURITÉ & DÉFENSE",
-        "nav-nature": "PROTECTION DE LA NATURE",
-        "headline": "SKYMIND DOCK",
-        "spec-camera": "Type de caméra",
-        "spec-range": "Portée de communication",
-        "spec-speed": "Vitesse maximale",
-        "spec-flight": "Autonomie minimale",
-        "signup-title": "SOYEZ PARMI LES PREMIERS",
-        "first-name": "Prénom",
-        "last-name": "Nom",
-        "email": "Adresse e-mail",
-        "country": "Pays",
-        "submit": "ACCÉDER EN AVANT-PREMIÈRE →",
-        "sending": "ENVOI EN COURS…",
-        "success": "Merci. Votre demande d’accès anticipé a bien été reçue.",
-        "error": "Une erreur s’est produite. Réessayez ou écrivez à info@xaerova.com.",
-        "launch-title": "PRÉVU AU 1ER TRIMESTRE 2027",
-        "launch-copy": "Recevez des actualités exclusives, un accès anticipé et des informations sur les prochaines précommandes."
-      }
-    };
-
-    function setLanguage(lang) {
-      const selected = translations[lang] ? lang : "en";
-      document.documentElement.lang = selected;
-      localStorage.setItem("xaerova-language", selected);
-
-      document.querySelectorAll("[data-i18n]").forEach((element) => {
-        const key = element.getAttribute("data-i18n");
-        if (translations[selected][key]) {
-          element.innerHTML = translations[selected][key];
-        }
-      });
-
-      document.getElementById("langENG").classList.toggle("active", selected === "en");
-      document.getElementById("langFR").classList.toggle("active", selected === "fr");
-      document.getElementById("langENG").setAttribute("aria-pressed", String(selected === "en"));
-      document.getElementById("langFR").setAttribute("aria-pressed", String(selected === "fr"));
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const savedLanguage = localStorage.getItem("xaerova-language") || "en";
-      setLanguage(savedLanguage);
-
-      const mobileMenuButton = document.getElementById("mobileMenuToggle");
-      const mainNavigation = document.getElementById("mainNavigation");
-
-      mobileMenuButton.addEventListener("click", () => {
-        const isOpen = mainNavigation.classList.toggle("mobile-open");
-        mobileMenuButton.classList.toggle("active", isOpen);
-        mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
-        mobileMenuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
-      });
-
-      mainNavigation.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          mainNavigation.classList.remove("mobile-open");
-          mobileMenuButton.classList.remove("active");
-          mobileMenuButton.setAttribute("aria-expanded", "false");
-          mobileMenuButton.setAttribute("aria-label", "Open navigation menu");
-        });
-      });
-
-      const dropdown = document.getElementById("useCasesDropdown");
-      const dropdownButton = document.getElementById("useCasesButton");
-
-      dropdownButton.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const isOpen = dropdown.classList.toggle("open");
-        dropdownButton.setAttribute("aria-expanded", String(isOpen));
-      });
-
-      document.addEventListener("click", (event) => {
-        if (!mainNavigation.contains(event.target) && !mobileMenuButton.contains(event.target)) {
-          mainNavigation.classList.remove("mobile-open");
-          mobileMenuButton.classList.remove("active");
-          mobileMenuButton.setAttribute("aria-expanded", "false");
-        }
-
-        if (!dropdown.contains(event.target)) {
-          dropdown.classList.remove("open");
-          dropdownButton.setAttribute("aria-expanded", "false");
-        }
-      });
-
-      dropdown.querySelectorAll(".dropdown-menu a").forEach((link) => {
-        link.addEventListener("click", () => {
-          dropdown.classList.remove("open");
-          dropdownButton.setAttribute("aria-expanded", "false");
-        });
-      });
-
-      const form = document.getElementById("earlyAccessForm");
-      const message = document.getElementById("formMessage");
-      const button = document.getElementById("submitButton");
-
-      // FormSubmit autoresponders require a standard HTML POST, not AJAX.
-      // Set Reply-To to the visitor's email before the browser submits the form.
-      form.addEventListener("submit", () => {
-        document.getElementById("replyToEmail").value =
-          document.getElementById("email").value.trim();
-        button.disabled = true;
-        button.textContent = translations[document.documentElement.lang || "en"].sending;
-      });
-
-      // FormSubmit redirects back to the landing page after a successful submission.
-      const params = new URLSearchParams(window.location.search);
-      if (params.get("submitted") === "1") {
-        const lang = document.documentElement.lang || "en";
-        message.textContent = translations[lang].success;
-        form.reset();
-        window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
-      }
-    });
-  </script>
-
-  <script>
-/* Original procedural orbital scene. No photograph, texture download, or library. */
+/* Procedural orbital scene: visible Earth motion, drifting clouds, and softly shining city lights. No assets or libraries. */
 (() => {
   'use strict';
   const run = () => {
@@ -832,6 +234,15 @@
     const sky = make(1, 1), skyCtx = sky.getContext('2d');
     const atmosphere = make(1, 1), atmosphereCtx = atmosphere.getContext('2d');
     const surface = make(1, 1), surfaceCtx = surface.getContext('2d');
+    const cityPulseX = new Float32Array(MW), cityPulseY = new Float32Array(MH);
+    const starSprite = make(32, 32), starCtx = starSprite.getContext('2d');
+    const starLight = starCtx.createRadialGradient(16, 16, 0, 16, 16, 16);
+    starLight.addColorStop(0, 'rgba(228,251,255,1)');
+    starLight.addColorStop(.12, 'rgba(177,230,255,.85)');
+    starLight.addColorStop(.32, 'rgba(113,199,245,.18)');
+    starLight.addColorStop(1, 'rgba(74,176,238,0)');
+    starCtx.fillStyle = starLight; starCtx.fillRect(0, 0, 32, 32);
+    let shiningStars = [];
     let width, height, top, pixels, map, count = 0, horizon = [], raf = 0, last = 0, elapsed = 0, frames = 0, dead = false;
     let resizeFrame = 0, ready = false;
 
@@ -859,7 +270,7 @@
     function resize() {
       if (dead) return;
       const w = Math.max(1, innerWidth), h = Math.max(1, innerHeight);
-      const ratio = Math.min(devicePixelRatio || 1, 1.15, (w <= 760 ? 640 : 1050) / w);
+      const ratio = Math.min(devicePixelRatio || 1, 1.15, (w <= 760 ? 550 : 900) / w);
       width = canvas.width = sky.width = atmosphere.width = Math.round(w * ratio);
       height = canvas.height = sky.height = atmosphere.height = Math.round(h * ratio);
       const camera = 1.035, pitch = .29, cp = Math.cos(pitch), sp = Math.sin(pitch);
@@ -876,7 +287,16 @@
       surface.width = width; surface.height = height - top;
       pixels = surfaceCtx.createImageData(width, height - top);
       const capacity = width * (height - top);
-      map = { index: new Uint32Array(capacity), u: new Float32Array(capacity), cityRow: new Uint32Array(capacity), smallRow: new Uint32Array(capacity), cityFy: new Float32Array(capacity), smallFy: new Float32Array(capacity), fog: new Float32Array(capacity), shade: new Float32Array(capacity) };
+      map = {
+        index: new Uint32Array(capacity),
+        u: new Float32Array(capacity),
+        cityRow: new Uint32Array(capacity),
+        smallRow: new Uint32Array(capacity),
+        cityFy: new Float32Array(capacity),
+        smallFy: new Float32Array(capacity),
+        fog: new Float32Array(capacity),
+        shade: new Float32Array(capacity)
+      };
       count = 0;
       for (let y = top; y < height; y++) {
         const sy = (.5 - (y + .5) / height) * 2 * tanV;
@@ -895,87 +315,265 @@
           map.u[i] = fract(.52 + Math.atan2(px, depth) / TAU * 14) * MW;
           const v = fract(.15 + (.5 - Math.asin(clamp(north, -1, 1)) / Math.PI) * 6);
           const cityY = v * MH, smallY = v * NH;
-          map.cityRow[i] = (cityY | 0) * MW; map.cityFy[i] = cityY - (cityY | 0);
-          map.smallRow[i] = (smallY | 0) * NW; map.smallFy[i] = smallY - (smallY | 0);
+          map.cityRow[i] = (cityY | 0) * MW;
+          map.cityFy[i] = cityY - (cityY | 0);
+          map.smallRow[i] = (smallY | 0) * NW;
+          map.smallFy[i] = smallY - (smallY | 0);
           map.fog[i] = Math.exp(-incidence * 23);
           map.shade[i] = .70 + .30 * clamp((y - top) / (height - top));
           pixels.data[offset + 3] = 255;
         }
       }
-      skyCtx.fillStyle = '#020811'; skyCtx.fillRect(0, 0, width, height);
-      skyCtx.save(); skyCtx.scale(1, .85);
-      const skyGlow = skyCtx.createRadialGradient(width * .64, height * .46 / .85, 0, width * .64, height * .46 / .85, width * .78);
-      skyGlow.addColorStop(0, 'rgba(0,174,193,.55)');
-      skyGlow.addColorStop(.35, 'rgba(0,96,122,.28)');
+      skyCtx.fillStyle = '#01050a';
+      skyCtx.fillRect(0, 0, width, height);
+      skyCtx.save();
+      skyCtx.scale(1, .85);
+      const skyGlow = skyCtx.createRadialGradient(
+        width * .64, height * .46 / .85, 0,
+        width * .64, height * .46 / .85, width * .78
+      );
+      skyGlow.addColorStop(0, 'rgba(0,174,193,.32)');
+      skyGlow.addColorStop(.35, 'rgba(0,96,122,.17)');
       skyGlow.addColorStop(1, 'rgba(0,18,33,0)');
-      skyCtx.fillStyle = skyGlow; skyCtx.fillRect(0, 0, width, height / .85); skyCtx.restore();
+      skyCtx.fillStyle = skyGlow;
+      skyCtx.fillRect(0, 0, width, height / .85);
+      skyCtx.restore();
+
+      shiningStars = [];
       let starSeed = 1781;
-      const starRandom = () => { starSeed = starSeed * 16807 % 2147483647; return (starSeed - 1) / 2147483646; };
+      const starRandom = () => {
+        starSeed = starSeed * 16807 % 2147483647;
+        return (starSeed - 1) / 2147483646;
+      };
       for (let i = 0; i < Math.min(230, width * height / 5100); i++) {
-        const x = starRandom() * width, y = starRandom() * height * .60, r = .25 + starRandom() * .65;
+        const x = starRandom() * width;
+        const y = starRandom() * height * .60;
+        const r = .25 + starRandom() * .65;
         skyCtx.fillStyle = 'rgba(153,213,228,' + (.12 + starRandom() * .44) + ')';
-        skyCtx.beginPath(); skyCtx.arc(x, y, r, 0, TAU); skyCtx.fill();
+        skyCtx.beginPath();
+        skyCtx.arc(x, y, r, 0, TAU);
+        skyCtx.fill();
+
+        if (i % 9 === 2 && y < height * .44) {
+          shiningStars.push({
+            x, y,
+            size: 5 + r * 5,
+            phase: i * 1.71,
+            speed: .68 + (i % 5) * .11
+          });
+        }
       }
-      rim(atmosphereCtx, 1);
+      rim(atmosphereCtx, .86);
       render();
     }
 
     function render() {
       if (!pixels || dead) return;
-      const output = pixels.data, orbit = fract(elapsed * .00023) * MW;
-      const wind = fract(.12 + elapsed * .00013) * NW;
+      const output = pixels.data;
+      const orbit = fract(elapsed * .00165) * MW;
+      const wind = fract(.12 + elapsed * .00065) * NW;
+
+      // Nearby lights brighten together; distant city clusters use different phases.
+      const lightPhase = elapsed * 1.02;
+      for (let x = 0; x < MW; x++) {
+        cityPulseX[x] = .5 + .5 * Math.sin(lightPhase + x * .061);
+      }
+      for (let y = 0; y < MH; y++) {
+        cityPulseY[y] = .5 + .5 * Math.sin(elapsed * .74 + y * .077 + 2.3);
+      }
+
       for (let i = 0; i < count; i++) {
-        const x = map.u[i] + orbit, floorX = x | 0, fx = x - floorX, x0 = floorX & (MW - 1), x1 = (x0 + 1) & (MW - 1);
-        const row = map.cityRow[i], next = (row + MW) & (MW * MH - 1), fy = map.cityFy[i];
-        const a = row + x0, b = row + x1, c = next + x0, d = next + x1;
-        const wa = (1 - fx) * (1 - fy), wb = fx * (1 - fy), wc = (1 - fx) * fy, wd = fx * fy;
+        const x = map.u[i] + orbit;
+        const floorX = x | 0;
+        const fx = x - floorX;
+        const x0 = floorX & (MW - 1);
+        const x1 = (x0 + 1) & (MW - 1);
+        const row = map.cityRow[i];
+        const next = (row + MW) & (MW * MH - 1);
+        const fy = map.cityFy[i];
+        const a = row + x0;
+        const b = row + x1;
+        const c = next + x0;
+        const d = next + x1;
+        const wa = (1 - fx) * (1 - fy);
+        const wb = fx * (1 - fy);
+        const wc = (1 - fx) * fy;
+        const wd = fx * fy;
+
         const lightValue = lights[a] * wa + lights[b] * wb + lights[c] * wc + lights[d] * wd;
         const glowValue = bloom[a] * wa + bloom[b] * wb + bloom[c] * wc + bloom[d] * wd;
-        const smallX = x * .25, floorSmall = smallX | 0, f = smallX - floorSmall, sx = floorSmall & (NW - 1), sx1 = (sx + 1) & (NW - 1);
-        const sr = map.smallRow[i], sn = (sr + NW) & (NW * NH - 1), sf = map.smallFy[i];
-        const land = ((terrain[sr + sx] * (1 - f) + terrain[sr + sx1] * f) * (1 - sf) +
-          (terrain[sn + sx] * (1 - f) + terrain[sn + sx1] * f) * sf) / 255;
-        const cloudX = smallX + wind, floorCloud = cloudX | 0, cf = cloudX - floorCloud, cx = floorCloud & (NW - 1), cx1 = (cx + 1) & (NW - 1);
-        const cover = ((clouds[sr + cx] * (1 - cf) + clouds[sr + cx1] * cf) * (1 - sf) +
-          (clouds[sn + cx] * (1 - cf) + clouds[sn + cx1] * cf) * sf) / 255;
-        const target = map.index[i], fog = map.fog[i], transmission = 1 - cover * .93;
-        const city = lightValue * transmission * (1 - fog * .94) * .93;
-        const glow = glowValue * transmission * .95 * (1 - fog * .8);
-        const white = Math.max(0, city - 36) * .42, cloudLight = cover * (67 + fog * 35);
-        const shade = map.shade[i];
-        output[target] = (2 + land * 3) * shade + city * 1.12 + glow * .80 + cloudLight * .66 + fog * 3;
-        output[target + 1] = (7 + land * 5) * shade + city * .87 + glow * .57 + white + cloudLight * .82 + fog * 25;
-        output[target + 2] = (13 + land * 6) * shade + city * .66 + glow * .43 + white + cloudLight + fog * 43;
+
+        const smallX = x * .25;
+        const floorSmall = smallX | 0;
+        const f = smallX - floorSmall;
+        const sx = floorSmall & (NW - 1);
+        const sx1 = (sx + 1) & (NW - 1);
+        const sr = map.smallRow[i];
+        const sn = (sr + NW) & (NW * NH - 1);
+        const sf = map.smallFy[i];
+
+        const land = (
+          (terrain[sr + sx] * (1 - f) + terrain[sr + sx1] * f) * (1 - sf) +
+          (terrain[sn + sx] * (1 - f) + terrain[sn + sx1] * f) * sf
+        ) / 255;
+
+        const cloudX = smallX + wind;
+        const floorCloud = cloudX | 0;
+        const cf = cloudX - floorCloud;
+        const cx = floorCloud & (NW - 1);
+        const cx1 = (cx + 1) & (NW - 1);
+
+        const cover = (
+          (clouds[sr + cx] * (1 - cf) + clouds[sr + cx1] * cf) * (1 - sf) +
+          (clouds[sn + cx] * (1 - cf) + clouds[sn + cx1] * cf) * sf
+        ) / 255;
+
+        const target = map.index[i];
+        const fog = map.fog[i];
+        const transmission = 1 - cover * .93;
+
+        const shine =
+          .57 +
+          cityPulseX[x0] ** 2 * .66 +
+          cityPulseY[row / MW] ** 2 * .37;
+
+        const city = lightValue * transmission * (1 - fog * .94) * .93 * shine;
+        const glow = glowValue * transmission * .95 * (1 - fog * .8) * (.72 + shine * .43);
+        const white = Math.max(0, city - 36) * .42;
+        const cloudLight = cover * (47 + fog * 25);
+        const shade = map.shade[i] * .60;
+
+        output[target] =
+          (2 + land * 3) * shade +
+          city * 1.12 +
+          glow * .80 +
+          cloudLight * .66 +
+          fog * 1.8;
+
+        output[target + 1] =
+          (7 + land * 5) * shade +
+          city * .87 +
+          glow * .57 +
+          white +
+          cloudLight * .82 +
+          fog * 15;
+
+        output[target + 2] =
+          (13 + land * 6) * shade +
+          city * .66 +
+          glow * .43 +
+          white +
+          cloudLight +
+          fog * 26;
       }
+
       surfaceCtx.putImageData(pixels, 0, 0);
-      ctx.drawImage(sky, 0, 0); ctx.drawImage(surface, 0, top);
-      ctx.globalAlpha = .90 + Math.sin(elapsed * .27) * .07;
-      ctx.drawImage(atmosphere, 0, 0); ctx.globalAlpha = 1;
+      ctx.drawImage(sky, 0, 0);
+
+      for (const star of shiningStars) {
+        ctx.globalAlpha = .20 + .36 * (
+          .5 + .5 * Math.sin(elapsed * star.speed + star.phase)
+        );
+        ctx.drawImage(
+          starSprite,
+          star.x - star.size / 2,
+          star.y - star.size / 2,
+          star.size,
+          star.size
+        );
+      }
+
+      ctx.globalAlpha = 1;
+      ctx.drawImage(surface, 0, top);
+
+      // Keep the atmospheric rim calm while individual lights pulse.
+      ctx.globalAlpha = .84 + Math.sin(elapsed * .95) * .018;
+      ctx.drawImage(atmosphere, 0, 0);
+      ctx.globalAlpha = 1;
+
       frames++;
       root.dataset.proceduralFrame = String(frames);
       root.dataset.proceduralTime = elapsed.toFixed(2);
+      root.dataset.proceduralOrbit = (orbit / MW).toFixed(5);
+      root.dataset.proceduralLightPhase = (lightPhase % TAU).toFixed(3);
     }
-    function stop() { if (raf) cancelAnimationFrame(raf); raf = 0; last = 0; }
-    function start() { if (!dead && ready && !raf && !document.hidden && !motion.matches) raf = requestAnimationFrame(tick); }
+
+    function stop() {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+      last = 0;
+    }
+
+    function start() {
+      if (!dead && ready && !raf && !document.hidden && !motion.matches) {
+        raf = requestAnimationFrame(tick);
+      }
+    }
+
     function tick(now) {
       raf = 0;
-      if (dead || document.hidden || motion.matches) { last = 0; return; }
+      if (dead || document.hidden || motion.matches) {
+        last = 0;
+        return;
+      }
       if (!last) last = now;
       const delta = now - last;
-      if (delta >= (innerWidth <= 760 ? 1000 / 16 : 1000 / 20)) { elapsed += Math.min(delta / 1000, .25); last = now; render(); }
+      const interval = innerWidth <= 760 ? 1000 / 16 : 1000 / 20;
+      if (delta >= interval) {
+        elapsed += Math.min(delta / 1000, .25);
+        last = now;
+        render();
+      }
       start();
     }
-    addEventListener('resize', () => { cancelAnimationFrame(resizeFrame); resizeFrame = requestAnimationFrame(resize); }, { passive: true });
-    document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
-    const motionChange = () => { stop(); render(); start(); };
-    if (motion.addEventListener) motion.addEventListener('change', motionChange); else motion.addListener(motionChange);
-    addEventListener('pagehide', event => { stop(); if (!event.persisted) dead = true; });
-    addEventListener('pageshow', event => { if (event.persisted) { resize(); start(); } });
-    resize(); ready = true; root.dataset.renderer = 'procedural-canvas2d'; root.classList.add('earth-ready'); start();
-  };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run, { once: true }); else run();
-})();
 
+    addEventListener('resize', () => {
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(resize);
+    }, { passive: true });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop();
+      else start();
+    });
+
+    const motionChange = () => {
+      stop();
+      render();
+      start();
+    };
+
+    if (motion.addEventListener) {
+      motion.addEventListener('change', motionChange);
+    } else {
+      motion.addListener(motionChange);
+    }
+
+    addEventListener('pagehide', event => {
+      stop();
+      if (!event.persisted) dead = true;
+    });
+
+    addEventListener('pageshow', event => {
+      if (event.persisted) {
+        resize();
+        start();
+      }
+    });
+
+    resize();
+    ready = true;
+    root.dataset.renderer = 'procedural-canvas2d';
+    root.classList.add('earth-ready');
+    start();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run, { once: true });
+  } else {
+    run();
+  }
+})();
   </script>
 </body>
 </html>
