@@ -1,10 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preload" as="image" href="digital-world-background.webp" fetchpriority="high">
   <title>XAEROVA — Autonomous Drone Infrastructure</title>
   <meta name="description" content="Be among the first to discover XAEROVA. Get early access and updates about our autonomous drone system.">
   <link rel="canonical" href="https://xaerova.com/">
@@ -29,35 +27,27 @@
       --muted: rgba(235,245,255,.72);
       --panel: rgba(0,93,145,.78);
     }
-
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
+    html { scroll-behavior: smooth; background: #020811; }
     body {
       isolation: isolate;
       margin: 0;
       min-height: 100vh;
       color: var(--white);
-      background: #020811;
+      background: transparent;
       font-family: "Rajdhani", sans-serif;
       overflow-x: hidden;
     }
-
-    /* Animated Earth background */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background:
-        linear-gradient(180deg, rgba(0,7,17,.35) 0%, rgba(0,9,20,.18) 42%, rgba(0,5,14,.58) 100%),
-        url("digital-world-background.webp") center center / cover no-repeat;
-      transform: scale(1.015);
-      transform-origin: 50% 50%;
-      animation: earth-drift 48s ease-in-out infinite alternate;
-      will-change: transform, background-position;
+    #xaerova-earth {
+      position: fixed; inset: 0; z-index: -2; width: 100%; height: 100%;
+      display: block; pointer-events: none;
     }
-
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background: linear-gradient(180deg, rgba(0,5,16,.42), rgba(0,9,22,.10) 42%, rgba(0,4,13,.58)),
+                  radial-gradient(ellipse at 50% 48%, transparent 18%, rgba(0,3,12,.42) 100%);
+    }
+    .world-effects { display: none !important; }
     body::after {
       content: "";
       position: fixed;
@@ -67,7 +57,7 @@
       background: radial-gradient(ellipse at 50% 45%, transparent 20%, rgba(0,0,0,.25) 100%);
     }
 
-    /* Living satellite atmosphere */
+    /* Living satellite atmosphere: drifting cloud banks, orbital light and subtle stars. */
     .world-effects {
       position: fixed;
       inset: 0;
@@ -76,7 +66,6 @@
       pointer-events: none;
       isolation: isolate;
     }
-
     .world-clouds {
       position: absolute;
       inset: -18%;
@@ -90,7 +79,6 @@
       animation: cloud-flow 34s ease-in-out infinite alternate;
       will-change: transform;
     }
-
     .world-stars {
       position: absolute;
       inset: 0;
@@ -104,7 +92,6 @@
       background-size: 380px 320px;
       animation: star-shimmer 8s ease-in-out infinite alternate;
     }
-
     .orbital-sweep {
       position: absolute;
       width: 62vw;
@@ -118,41 +105,10 @@
       transform-origin: center;
       animation: orbital-pass 19s linear infinite;
     }
-
     main { position: relative; z-index: 1; }
     .topbar { position: relative; z-index: 5; }
 
-    @keyframes earth-drift {
-      0% {
-        transform: scale(1.015) translate3d(0, 0, 0);
-        background-position: center center, 50% 50%;
-      }
-      100% {
-        transform: scale(1.09) translate3d(-.7%, -.4%, 0);
-        background-position: center center, 53% 47%;
-      }
-    }
-
-    @keyframes cloud-flow {
-      0% { transform: translate3d(-2%, 1%, 0) scale(1.08); }
-      50% { transform: translate3d(2%, -1.5%, 0) scale(1.13); }
-      100% { transform: translate3d(-1%, 2%, 0) scale(1.1); }
-    }
-
-    @keyframes star-shimmer {
-      from { opacity: .12; transform: translate3d(0, 0, 0); }
-      to { opacity: .34; transform: translate3d(-8px, 5px, 0); }
-    }
-
-    @keyframes orbital-pass {
-      0% { left: -70vw; top: 58%; opacity: 0; }
-      8% { opacity: .75; }
-      82% { opacity: .55; }
-      100% { left: 115vw; top: 35%; opacity: 0; }
-    }
-
     a { color: inherit; text-decoration: none; }
-
     .topbar {
       height: 62px;
       width: 100%;
@@ -166,10 +122,8 @@
       position: relative;
       z-index: 5;
     }
-
     .brand { display: flex; align-items: center; width: fit-content; }
     .brand img { width: 112px; height: auto; max-height: 34px; object-fit: contain; }
-
     .nav-links {
       display: flex;
       align-items: center;
@@ -182,12 +136,9 @@
       letter-spacing: .32em;
       color: rgba(255,255,255,.8);
     }
-
     .nav-links a { transition: color .2s ease; }
     .nav-links a:hover, .dropdown-trigger:hover { color: var(--cyan); }
-
     .dropdown { position: relative; }
-
     .dropdown-trigger {
       display: inline-flex;
       align-items: center;
@@ -200,9 +151,7 @@
       font: inherit;
       letter-spacing: inherit;
     }
-
     .dropdown-arrow { font-size: 13px; transition: transform .2s ease; }
-
     .dropdown-menu {
       display: none;
       position: absolute;
@@ -219,7 +168,6 @@
       letter-spacing: .08em;
       white-space: normal;
     }
-
     .dropdown-menu a {
       display: block;
       padding: 12px 13px;
@@ -227,28 +175,18 @@
       font: 600 12px "Rajdhani", sans-serif;
       letter-spacing: .08em;
     }
-
     .dropdown-menu a:hover {
       color: var(--cyan);
       background: rgba(0,140,255,.14);
     }
-
     .dropdown.open .dropdown-menu { display: block; }
     .dropdown.open .dropdown-arrow { transform: rotate(180deg); }
-
     @media (hover: hover) and (pointer: fine) {
       .dropdown:hover .dropdown-menu,
       .dropdown:focus-within .dropdown-menu { display: block; }
       .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
     }
-
-    .right-tools {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 14px;
-    }
-
+    .right-tools { display: flex; align-items: center; justify-content: flex-end; gap: 14px; }
     .social-link {
       display: inline-flex;
       align-items: center;
@@ -258,10 +196,8 @@
       color: rgba(255,255,255,.9);
       transition: color .2s ease, transform .2s ease;
     }
-
     .social-link:hover { color: var(--cyan); transform: translateY(-2px); }
     .social-link svg { display: block; width: 17px; height: 17px; fill: currentColor; }
-
     .language-switch {
       display: inline-flex;
       align-items: center;
@@ -269,7 +205,6 @@
       border-radius: 3px;
       overflow: hidden;
     }
-
     .language-switch button {
       border: 0;
       min-width: 42px;
@@ -280,9 +215,7 @@
       font: 700 9px "Rajdhani", sans-serif;
       letter-spacing: .12em;
     }
-
     .language-switch button.active { color: white; background: var(--blue); }
-
     main {
       width: min(1120px, 100%);
       min-height: calc(100vh - 62px);
@@ -293,7 +226,6 @@
       align-items: center;
       text-align: center;
     }
-
     h1 {
       margin: 0 0 clamp(12px, 2.2vh, 25px);
       font: 800 clamp(42px, 8.4vw, 104px)/.98 "Orbitron", sans-serif;
@@ -302,7 +234,6 @@
       color: #fff;
       text-shadow: 0 0 12px rgba(0,153,255,.35), 0 0 35px rgba(0,130,255,.18);
     }
-
     .product-visual {
       width: min(820px, 94%);
       height: clamp(190px, 34vh, 340px);
@@ -312,7 +243,6 @@
       margin: 0 auto clamp(20px, 3vh, 30px);
       position: relative;
     }
-
     .product-visual::before {
       content: "";
       position: absolute;
@@ -324,7 +254,6 @@
       filter: blur(48px);
       border-radius: 50%;
     }
-
     .product-visual img {
       position: relative;
       max-width: 100%;
@@ -334,7 +263,6 @@
       object-fit: contain;
       filter: drop-shadow(0 16px 28px rgba(0,0,0,.55));
     }
-
     .specs {
       width: min(800px, 100%);
       display: grid;
@@ -342,7 +270,6 @@
       gap: 12px;
       margin: 0 auto clamp(20px, 3vh, 30px);
     }
-
     .spec strong {
       display: block;
       color: var(--blue);
@@ -350,7 +277,6 @@
       letter-spacing: .02em;
       text-shadow: 0 0 14px rgba(0,139,255,.2);
     }
-
     .spec span {
       display: block;
       margin-top: 4px;
@@ -359,9 +285,7 @@
       font-weight: 500;
       line-height: 1.15;
     }
-
     .signup { width: min(680px, 100%); }
-
     .signup h2 {
       margin: 0 0 14px;
       color: var(--blue);
@@ -370,7 +294,6 @@
       text-transform: uppercase;
       text-shadow: 0 0 14px rgba(0,139,255,.22);
     }
-
     .signup-form {
       display: grid;
       grid-template-columns: 100px 1fr;
@@ -384,14 +307,12 @@
       backdrop-filter: blur(12px);
       text-align: left;
     }
-
     .signup-form label {
       color: rgba(255,255,255,.8);
       font-size: 12px;
       font-weight: 600;
       letter-spacing: .03em;
     }
-
     .signup-form input {
       width: 100%;
       min-width: 0;
@@ -404,12 +325,7 @@
       background: rgba(255,255,255,.97);
       font: 500 14px "Rajdhani", sans-serif;
     }
-
-    .signup-form input:focus {
-      border-color: var(--cyan);
-      box-shadow: 0 0 0 2px rgba(0,200,255,.2);
-    }
-
+    .signup-form input:focus { border-color: var(--cyan); box-shadow: 0 0 0 2px rgba(0,200,255,.2); }
     .submit-button {
       grid-column: 2;
       min-height: 34px;
@@ -422,10 +338,8 @@
       letter-spacing: .12em;
       transition: background .2s, transform .2s;
     }
-
     .submit-button:hover { background: #0799ed; transform: translateY(-1px); }
     .submit-button:disabled { opacity: .65; cursor: wait; }
-
     .form-message {
       grid-column: 1 / -1;
       margin: 4px 0 0;
@@ -433,9 +347,9 @@
       font-size: 13px;
       color: #fff;
     }
-
-    .launch { margin-top: clamp(22px, 3.5vh, 34px); }
-
+    .launch {
+      margin-top: clamp(22px, 3.5vh, 34px);
+    }
     .launch h2 {
       margin: 0;
       color: var(--blue);
@@ -443,7 +357,6 @@
       text-transform: uppercase;
       text-shadow: 0 0 15px rgba(0,139,255,.22);
     }
-
     .launch p {
       margin: 0 auto;
       max-width: 620px;
@@ -451,37 +364,37 @@
       font-size: 12px;
       line-height: 1.35;
     }
-
     .launch sup { font-size: .55em; vertical-align: super; }
-
     @media (min-width: 900px) and (min-height: 850px) {
       main { padding-top: 55px; }
       .product-visual { height: 350px; }
     }
-
     .mobile-menu-toggle { display: none; }
+
+    :focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 3px;
+    }
 
     @media (max-width: 760px) {
       .topbar {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-start;
         flex-wrap: nowrap;
         height: 64px;
         min-height: 64px;
         padding: 0 15px;
         gap: 12px;
       }
-
-      .brand { flex: 0 0 auto; }
-      .brand img { width: 88px; max-height: 32px; }
-
+      .brand { flex: 0 0 auto; margin-right: 4px; }
+      .brand img { width: 96px; max-height: 32px; }
       .mobile-menu-toggle {
         display: flex;
-        flex: 0 0 38px;
-        width: 38px;
-        height: 38px;
+        flex: 0 0 40px;
+        width: 40px;
+        height: 40px;
         padding: 9px 7px;
         flex-direction: column;
         justify-content: center;
@@ -492,7 +405,6 @@
         background: rgba(0,100,180,.12);
         cursor: pointer;
       }
-
       .mobile-menu-toggle span {
         display: block;
         width: 21px;
@@ -501,14 +413,11 @@
         background: #fff;
         transition: transform .2s ease, opacity .2s ease;
       }
-
       .mobile-menu-toggle.active span:first-child { transform: translateY(7px) rotate(45deg); }
       .mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
       .mobile-menu-toggle.active span:last-child { transform: translateY(-7px) rotate(-45deg); }
-
       .right-tools { flex: 0 0 auto; margin-left: auto; }
       .language-switch button { min-width: 38px; padding: 9px 8px; }
-
       .nav-links {
         display: none;
         position: absolute;
@@ -527,9 +436,7 @@
         font-size: 10px;
         letter-spacing: .18em;
       }
-
       .nav-links.mobile-open { display: flex; }
-
       .nav-links > a, .nav-links .dropdown-trigger {
         display: flex;
         width: 100%;
@@ -537,9 +444,7 @@
         justify-content: space-between;
         border-bottom: 1px solid rgba(255,255,255,.08);
       }
-
       .dropdown { width: 100%; }
-
       .dropdown-menu {
         position: static;
         width: 100%;
@@ -552,107 +457,49 @@
         background: rgba(0,100,180,.12);
         box-shadow: none;
       }
-
       main {
         min-height: calc(100vh - 64px);
         padding: 28px 20px calc(34px + env(safe-area-inset-bottom));
       }
-
       h1 {
-        width: 100%;
-        max-width: 540px;
-        margin: 0 auto 14px;
-        font-size: clamp(25px, 6.5vw, 42px);
-        line-height: 1.15;
-        letter-spacing: -.035em;
-        text-wrap: balance;
+        width: 100%; max-width: 540px; margin: 0 auto 14px;
+        font-size: clamp(25px, 6.5vw, 42px); line-height: 1.15;
+        letter-spacing: -.035em; text-wrap: balance;
       }
-
       .product-visual {
-        width: 90%;
-        max-width: 430px;
-        height: clamp(125px, 29vw, 195px);
+        width: 90%; max-width: 430px; height: clamp(125px, 29vw, 195px);
         margin: 0 auto 18px;
       }
-
-      .product-visual img {
-        width: 100%;
-        height: 100%;
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-        filter: drop-shadow(0 9px 18px rgba(0,0,0,.5));
-      }
-
-      .product-visual::before {
-        width: 65%;
-        height: 30%;
-        left: 17.5%;
-        bottom: 5%;
-        filter: blur(30px);
-      }
-
+      .product-visual img { width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 9px 18px rgba(0,0,0,.5)); }
+      .product-visual::before { width: 65%; height: 30%; left: 17.5%; bottom: 5%; filter: blur(30px); }
       .specs {
-        width: 100%;
-        max-width: 430px;
+        width: 100%; max-width: 430px;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-        margin: 0 auto 22px;
+        gap: 10px; margin: 0 auto 22px;
       }
-
       .spec {
-        min-width: 0;
-        text-align: center;
+        min-width: 0; text-align: center;
         padding: 11px 8px 10px;
         border: 1px solid rgba(91,184,255,.17);
         border-radius: 8px;
         background: rgba(0,32,62,.42);
         backdrop-filter: blur(5px);
       }
-
       .spec strong { font-size: clamp(22px,6vw,28px); line-height: 1.1; }
       .spec span { font-size: clamp(10px,2.8vw,12px); line-height: 1.25; overflow-wrap: break-word; }
-
       .signup { width: 100%; max-width: 480px; }
       .signup h2 { font-size: 23px; margin-bottom: 12px; }
-
       .signup-form {
-        width: 100%;
-        grid-template-columns: 1fr;
-        gap: 7px;
-        padding: 18px;
-        border-radius: 15px;
+        width: 100%; grid-template-columns: 1fr; gap: 7px;
+        padding: 18px; border-radius: 15px;
       }
-
       .signup-form label { margin-top: 7px; font-size: 13px; }
-
-      .signup-form input {
-        width: 100%;
-        height: 42px;
-        padding: 8px 12px;
-        font-size: 16px;
-        border-radius: 4px;
-      }
-
-      .submit-button {
-        grid-column: 1;
-        width: 100%;
-        min-height: 44px;
-        margin-top: 12px;
-        font-size: 12px;
-        border-radius: 4px;
-      }
-
+      .signup-form input { width: 100%; height: 42px; padding: 8px 12px; font-size: 16px; border-radius: 4px; }
+      .submit-button { grid-column: 1; width: 100%; min-height: 44px; margin-top: 12px; font-size: 12px; border-radius: 4px; }
       .form-message { grid-column: 1; font-size: 13px; }
       .launch { width: 100%; margin-top: 24px; }
       .launch h2 { font-size: clamp(23px,6vw,30px); letter-spacing: .04em; }
-
-      .launch p {
-        max-width: 400px;
-        padding: 0 8px;
-        font-size: 13px;
-        line-height: 1.5;
-      }
+      .launch p { max-width: 400px; padding: 0 8px; font-size: 13px; line-height: 1.5; }
     }
 
     @media (max-width: 390px) {
@@ -679,18 +526,15 @@
       .product-visual { height: 130px; width: 55%; }
       h1 { font-size: 32px; }
     }
-
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      *, *::before, *::after {
-        animation: none !important;
-        transition-duration: .01ms !important;
-      }
+      *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
     }
   </style>
 </head>
 
 <body>
+  <canvas id="xaerova-earth" aria-hidden="true"></canvas>
   <div class="world-effects" aria-hidden="true">
     <div class="world-clouds"></div>
     <div class="world-stars"></div>
@@ -705,14 +549,12 @@
     <nav class="nav-links" id="mainNavigation" aria-label="Main navigation">
       <a href="mailto:info@xaerova.com?subject=XAEROVA%20Investor%20Enquiry" data-i18n="nav-investors">INVESTORS</a>
       <a href="mailto:info@xaerova.com?subject=XAEROVA%20Press%20Enquiry" data-i18n="nav-press">PRESS</a>
-
       <div class="dropdown" id="useCasesDropdown">
         <button class="dropdown-trigger" type="button" id="useCasesButton"
           aria-expanded="false" aria-controls="useCasesMenu">
           <span data-i18n="nav-usecases">USE CASES</span>
           <span class="dropdown-arrow" aria-hidden="true">⌄</span>
         </button>
-
         <div class="dropdown-menu" id="useCasesMenu">
           <a href="#early-access" data-i18n="nav-agriculture">Agriculture</a>
           <a href="#early-access" data-i18n="nav-security">Security &amp; Defense</a>
@@ -754,6 +596,8 @@
     <section class="signup" id="early-access">
       <h2 data-i18n="signup-title">BE AMONG THE FIRST</h2>
 
+      <!-- FormSubmit sends registrations to info@xaerova.com.
+           The first test submission may trigger an email verification request. -->
       <form class="signup-form" id="earlyAccessForm" action="https://formsubmit.co/info@xaerova.com" method="POST">
         <input type="hidden" name="_subject" value="New XAEROVA early-access registration">
         <input type="hidden" name="_template" value="table">
@@ -911,8 +755,8 @@
       const message = document.getElementById("formMessage");
       const button = document.getElementById("submitButton");
 
-      // FormSubmit still uses its standard form submission flow.
-      // Its activation/CAPTCHA requirements are separate from the background animation.
+      // FormSubmit autoresponders require a standard HTML POST, not AJAX.
+      // Set Reply-To to the visitor's email before the browser submits the form.
       form.addEventListener("submit", () => {
         document.getElementById("replyToEmail").value =
           document.getElementById("email").value.trim();
@@ -920,6 +764,7 @@
         button.textContent = translations[document.documentElement.lang || "en"].sending;
       });
 
+      // FormSubmit redirects back to the landing page after a successful submission.
       const params = new URLSearchParams(window.location.search);
       if (params.get("submitted") === "1") {
         const lang = document.documentElement.lang || "en";
@@ -929,5 +774,376 @@
       }
     });
   </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js"></script>
+<script>
+(() => {
+  'use strict';
+  const canvas = document.getElementById('xaerova-earth');
+  if (!canvas || !window.THREE) return;
+
+  const THREE = window.THREE;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = () => window.innerWidth < 760;
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: 'high-performance',
+      depth: true,
+      stencil: false
+    });
+  } catch (error) {
+    console.warn('XAEROVA Earth: WebGL is unavailable.', error);
+    return;
+  }
+
+  renderer.setClearColor(0x000000, 0);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile() ? 1.35 : 1.8));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.22;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, innerWidth / innerHeight, .1, 120);
+  camera.position.set(0, 0, 8.8);
+
+  const clock = new THREE.Clock();
+  const world = new THREE.Group();
+  scene.add(world);
+
+  // Deterministic shader-driven Earth: no downloaded planet image or texture map.
+  const earthVertex = `
+    varying vec3 vNormalW;
+    varying vec3 vPositionW;
+    varying vec3 vLocal;
+    varying vec3 vView;
+    varying vec2 vUv0;
+    void main() {
+      vec4 worldPos = modelMatrix * vec4(position, 1.0);
+      vPositionW = worldPos.xyz;
+      vLocal = normalize(position);
+      vNormalW = normalize(normalMatrix * normal);
+      vec4 mv = viewMatrix * worldPos;
+      vView = normalize(-mv.xyz);
+      vUv0 = uv;
+      gl_Position = projectionMatrix * mv;
+    }
+  `;
+
+  const earthFragment = `
+    precision highp float;
+    varying vec3 vNormalW;
+    varying vec3 vPositionW;
+    varying vec3 vLocal;
+    varying vec3 vView;
+    varying vec2 vUv0;
+    uniform float uTime;
+    uniform vec3 uSun;
+
+    float hash31(vec3 p) {
+      p = fract(p * .1031);
+      p += dot(p, p.yzx + 33.33);
+      return fract((p.x + p.y) * p.z);
+    }
+    float noise3(vec3 x) {
+      vec3 i = floor(x), f = fract(x);
+      f = f*f*(3.0-2.0*f);
+      return mix(mix(mix(hash31(i), hash31(i+vec3(1,0,0)),f.x),
+                      mix(hash31(i+vec3(0,1,0)),hash31(i+vec3(1,1,0)),f.x),f.y),
+                 mix(mix(hash31(i+vec3(0,0,1)),hash31(i+vec3(1,0,1)),f.x),
+                     mix(hash31(i+vec3(0,1,1)),hash31(i+vec3(1,1,1)),f.x),f.y),f.z);
+    }
+    float fbm(vec3 p) {
+      float v = 0.0, a = .5;
+      mat3 m = mat3(1.6,1.2,0.0,-1.2,1.6,0.0,0.0,0.0,1.7);
+      for (int i=0; i<6; i++) {
+        v += a * noise3(p);
+        p = m*p + 7.13;
+        a *= .5;
+      }
+      return v;
+    }
+    float ridged(vec3 p) {
+      float n = fbm(p);
+      return 1.0 - abs(n*2.0-1.0);
+    }
+    void main() {
+      vec3 n = normalize(vLocal);
+      // Domain-warped continental plates with smaller islands and coast detail.
+      vec3 q = n * 3.15;
+      vec3 warp = vec3(fbm(q+4.1), fbm(q+17.7), fbm(q-8.3));
+      float continents = fbm(q*1.08 + warp*1.65);
+      float coast = smoothstep(.485, .535, continents);
+      float shelves = smoothstep(.455, .505, continents);
+      float detail = fbm(n*47.0 + warp*3.0);
+      float mountains = ridged(n*19.0 + warp*2.2);
+
+      vec3 deepOcean = vec3(.004,.035,.105);
+      vec3 ocean = vec3(.012,.105,.22);
+      vec3 shallow = vec3(.025,.29,.39);
+      vec3 landLow = vec3(.10,.27,.20);
+      vec3 landMid = vec3(.24,.39,.25);
+      vec3 landHigh = vec3(.53,.56,.39);
+      vec3 rock = vec3(.38,.39,.34);
+
+      vec3 oceanColor = mix(deepOcean, ocean, smoothstep(.0,.8,detail));
+      oceanColor = mix(oceanColor, shallow, shelves*(1.0-coast)*.7);
+      vec3 landColor = mix(landLow,landMid,smoothstep(.28,.68,detail));
+      landColor = mix(landColor,landHigh,smoothstep(.63,.88,mountains)*coast*.62);
+      landColor = mix(landColor,rock,smoothstep(.76,.93,mountains)*coast*.32);
+      landColor *= .84 + .24*detail;
+      vec3 base = mix(oceanColor,landColor,coast);
+
+      // Polar ice caps, high-altitude snow and subtle atmospheric haze.
+      float latitude = abs(n.y);
+      float ice = smoothstep(.79,.94,latitude) + smoothstep(.78,.94,mountains)*coast*.28;
+      base = mix(base,vec3(.72,.84,.91),clamp(ice,0.0,1.0));
+
+      // Day/night terminator, physically legible sun direction and ocean glint.
+      vec3 N = normalize(vNormalW);
+      vec3 L = normalize(uSun);
+      vec3 V = normalize(vView);
+      float ndl = dot(N,L);
+      float day = smoothstep(-.22,.34,ndl);
+      float diffuse = max(ndl,0.0);
+      float spec = pow(max(dot(reflect(-L,N),V),0.0),92.0);
+      float oceanMask = 1.0-coast;
+      vec3 nightColor = base * vec3(.045,.095,.19);
+      vec3 dayColor = base * (.20 + .95*diffuse);
+      dayColor += vec3(.18,.43,.66)*spec*oceanMask*1.8;
+
+      // City lights are procedural clusters, visible only on the night hemisphere.
+      vec3 cityP = n*vec3(175.0,115.0,175.0);
+      float cityNoise = noise3(floor(cityP)*.83);
+      float cityFine = noise3(floor(cityP*2.7)*.71);
+      float cities = smoothstep(.70,.84,cityNoise)*smoothstep(.48,.72,cityFine)*coast;
+      float lights = cities * (1.0-day) * (1.0-smoothstep(-.35,.03,ndl));
+      vec3 nightLights = vec3(1.0,.57,.22)*lights*2.4;
+
+      vec3 color = mix(nightColor,dayColor,day) + nightLights;
+      // Blue limb glow remains visible around the silhouette.
+      float fresnel = pow(1.0-max(dot(N,V),0.0),3.2);
+      color += vec3(.015,.20,.62)*fresnel*.45;
+      gl_FragColor = vec4(color,1.0);
+    }
+  `;
+
+  const earthMaterial = new THREE.ShaderMaterial({
+    uniforms: {
+      uTime: { value: 0 },
+      uSun: { value: new THREE.Vector3(-.75,.34,.82).normalize() }
+    },
+    vertexShader: earthVertex,
+    fragmentShader: earthFragment
+  });
+
+  const radius = 2.72;
+  const earth = new THREE.Mesh(new THREE.SphereGeometry(radius, 160, 160), earthMaterial);
+  world.add(earth);
+
+  // Volumetric-looking cloud shell, made from animated multi-octave 3D noise.
+  const cloudVertex = `
+    varying vec3 vObj;
+    varying vec3 vNormalW;
+    varying vec3 vView;
+    void main() {
+      vObj = normalize(position);
+      vec4 wp = modelMatrix * vec4(position,1.0);
+      vNormalW = normalize(normalMatrix*normal);
+      vec4 mv = viewMatrix*wp;
+      vView = normalize(-mv.xyz);
+      gl_Position = projectionMatrix*mv;
+    }
+  `;
+  const cloudFragment = `
+    precision highp float;
+    varying vec3 vObj;
+    varying vec3 vNormalW;
+    varying vec3 vView;
+    uniform float uTime;
+    uniform vec3 uSun;
+    float h(vec3 p){p=fract(p*.1031);p+=dot(p,p.yxz+33.33);return fract((p.x+p.y)*p.z);}
+    float n3(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+      return mix(mix(mix(h(i),h(i+vec3(1,0,0)),f.x),mix(h(i+vec3(0,1,0)),h(i+vec3(1,1,0)),f.x),f.y),
+      mix(mix(h(i+vec3(0,0,1)),h(i+vec3(1,0,1)),f.x),mix(h(i+vec3(0,1,1)),h(i+vec3(1,1,1)),f.x),f.y),f.z);}
+    float cloudNoise(vec3 p){float a=.0,w=.55;for(int i=0;i<5;i++){a+=n3(p)*w;p=p*2.03+vec3(2.7,1.3,4.1);w*=.49;}return a;}
+    void main(){
+      vec3 p=normalize(vObj);
+      vec3 drift=vec3(uTime*.006, uTime*.0018, -uTime*.0035);
+      float broad=cloudNoise(p*5.6+drift);
+      float detail=cloudNoise(p*15.0-drift*1.7);
+      float wisps=cloudNoise(p*31.0+drift*2.0);
+      float density=smoothstep(.49,.68,broad+detail*.19+wisps*.075);
+      density*=smoothstep(.0,.12,abs(p.y)+.08);
+      vec3 N=normalize(vNormalW), L=normalize(uSun), V=normalize(vView);
+      float sun=max(dot(N,L),0.0);
+      float rim=pow(1.0-max(dot(N,V),0.0),2.0);
+      vec3 cloudCol=mix(vec3(.22,.42,.62),vec3(.88,.96,1.0),.38+sun*.62);
+      cloudCol+=vec3(.12,.35,.62)*rim*.48;
+      float alpha=density*(.14+sun*.48);
+      gl_FragColor=vec4(cloudCol,alpha);
+    }
+  `;
+  const cloudMaterial = new THREE.ShaderMaterial({
+    uniforms: { uTime:{value:0}, uSun:{value:new THREE.Vector3(-.75,.34,.82).normalize()} },
+    vertexShader: cloudVertex,
+    fragmentShader: cloudFragment,
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.NormalBlending
+  });
+  const cloudShell = new THREE.Mesh(new THREE.SphereGeometry(radius*1.009,128,128),cloudMaterial);
+  world.add(cloudShell);
+
+  // Multi-layer Fresnel atmosphere: thin electric-blue edge plus soft outer halo.
+  function atmosphere(scale, color, power, opacity) {
+    const material = new THREE.ShaderMaterial({
+      uniforms:{uColor:{value:new THREE.Color(color)},uPower:{value:power},uOpacity:{value:opacity}},
+      vertexShader:`varying vec3 vN; varying vec3 vV; void main(){vec4 mv=modelViewMatrix*vec4(position,1.0);vN=normalize(normalMatrix*normal);vV=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}`,
+      fragmentShader:`uniform vec3 uColor;uniform float uPower;uniform float uOpacity;varying vec3 vN;varying vec3 vV;void main(){float f=pow(1.0-max(dot(normalize(vN),normalize(vV)),0.0),uPower);gl_FragColor=vec4(uColor,f*uOpacity);}`,
+      side:THREE.BackSide,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false
+    });
+    const shell = new THREE.Mesh(new THREE.SphereGeometry(radius*scale,96,96),material);
+    world.add(shell);
+    return shell;
+  }
+  atmosphere(1.045,0x087cff,2.1,.48);
+  atmosphere(1.105,0x0754c8,2.8,.16);
+
+  // Fine atmospheric scattering band, like a sunrise just beyond the horizon.
+  const horizon = new THREE.Mesh(
+    new THREE.SphereGeometry(radius*1.018,96,96),
+    new THREE.ShaderMaterial({
+      uniforms:{uTime:{value:0}},
+      vertexShader:`varying vec3 vN;varying vec3 vV;void main(){vec4 mv=modelViewMatrix*vec4(position,1.0);vN=normalize(normalMatrix*normal);vV=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}`,
+      fragmentShader:`uniform float uTime;varying vec3 vN;varying vec3 vV;void main(){float rim=pow(1.0-max(dot(normalize(vN),normalize(vV)),0.0),5.0);float pulse=.82+.18*sin(uTime*.42);vec3 c=mix(vec3(.0,.18,.68),vec3(.02,.72,1.0),rim);gl_FragColor=vec4(c,rim*.36*pulse);}`,
+      side:THREE.BackSide,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false
+    })
+  );
+  world.add(horizon);
+
+  // Distant starfield with varied brightness and subtle parallax rotation.
+  const starCount = isMobile() ? 950 : 1900;
+  const starPositions = new Float32Array(starCount*3);
+  const starSizes = new Float32Array(starCount);
+  for(let i=0;i<starCount;i++){
+    const r=32+Math.random()*46;
+    const z=Math.random()*2-1;
+    const a=Math.random()*Math.PI*2;
+    const t=Math.sqrt(1-z*z);
+    starPositions[i*3]=r*t*Math.cos(a);
+    starPositions[i*3+1]=r*z;
+    starPositions[i*3+2]=r*t*Math.sin(a);
+    starSizes[i]=.45+Math.random()*1.65;
+  }
+  const starGeo=new THREE.BufferGeometry();
+  starGeo.setAttribute('position',new THREE.BufferAttribute(starPositions,3));
+  starGeo.setAttribute('aSize',new THREE.BufferAttribute(starSizes,1));
+  const starMat=new THREE.PointsMaterial({color:0xb8dcff,size:.035,transparent:true,opacity:.82,sizeAttenuation:true,depthWrite:false});
+  const stars=new THREE.Points(starGeo,starMat);
+  scene.add(stars);
+
+  // Nebula haze: broad, very low-contrast light volumes behind the planet.
+  const haze = new THREE.Mesh(
+    new THREE.PlaneGeometry(34,20),
+    new THREE.ShaderMaterial({
+      transparent:true,depthWrite:false,uniforms:{uTime:{value:0}},
+      vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,
+      fragmentShader:`varying vec2 vUv;uniform float uTime;float blob(vec2 p,vec2 c,vec2 s){vec2 q=(p-c)/s;return exp(-dot(q,q));}void main(){vec2 p=vUv;float drift=sin(uTime*.035)*.018;float a=blob(p,vec2(.22+drift,.32),vec2(.24,.34));float b=blob(p,vec2(.78-drift,.64),vec2(.28,.26));float c=blob(p,vec2(.52,.92),vec2(.42,.16));float d=a*.13+b*.11+c*.075;vec3 col=mix(vec3(.005,.025,.09),vec3(.015,.18,.38),clamp(a+b,0.,1.));gl_FragColor=vec4(col,d);}`
+    })
+  );
+  haze.position.set(0,0,-34);
+  scene.add(haze);
+
+  // Thin orbital trajectories, rendered behind the globe with restrained glow.
+  const orbitGroup=new THREE.Group();
+  world.add(orbitGroup);
+  function makeOrbit(rx,ry,tilt,opacity,phase){
+    const pts=[];
+    for(let i=0;i<=360;i++){
+      const a=i/360*Math.PI*2;
+      pts.push(new THREE.Vector3(Math.cos(a)*rx,Math.sin(a)*ry,0));
+    }
+    const curve=new THREE.CatmullRomCurve3(pts,false,'centripetal');
+    const geo=new THREE.BufferGeometry().setFromPoints(curve.getPoints(360));
+    const mat=new THREE.LineBasicMaterial({color:0x38baff,transparent:true,opacity,depthWrite:false});
+    const line=new THREE.Line(geo,mat);
+    line.rotation.set(tilt,phase,tilt*.38);
+    orbitGroup.add(line);
+    return line;
+  }
+  makeOrbit(3.16,1.18,.56,.25,.24);
+  makeOrbit(3.55,1.42,-.48,.12,-.42);
+
+  // A small moving satellite glint on one orbital path.
+  const satellite = new THREE.Group();
+  const satCore = new THREE.Mesh(new THREE.SphereGeometry(.035,12,12),new THREE.MeshBasicMaterial({color:0xc9f5ff}));
+  const satGlow = new THREE.Sprite(new THREE.SpriteMaterial({color:0x29baff,transparent:true,opacity:.72,blending:THREE.AdditiveBlending,depthWrite:false}));
+  satGlow.scale.set(.42,.42,1);
+  satellite.add(satCore,satGlow);
+  orbitGroup.add(satellite);
+
+  // A restrained sun source gives the limb a cinematic cold-to-warm transition.
+  const sunLight=new THREE.DirectionalLight(0xb8ddff,2.0);
+  sunLight.position.set(-7,3,8);
+  scene.add(sunLight);
+  scene.add(new THREE.AmbientLight(0x244b78,.42));
+
+  function layout(){
+    const mobile=isMobile();
+    const w=innerWidth,h=innerHeight;
+    camera.aspect=w/h;
+    camera.fov=mobile?43:38;
+    camera.position.z=mobile?9.7:8.8;
+    camera.updateProjectionMatrix();
+    renderer.setPixelRatio(Math.min(devicePixelRatio||1,mobile?1.25:1.8));
+    renderer.setSize(w,h,false);
+    // The planet rises from the lower-right on desktop, centered lower on mobile.
+    world.position.set(mobile ? 0 : 1.0, mobile ? -1.75 : -1.55, -.2);
+    world.scale.setScalar(mobile?.91:1.0);
+    orbitGroup.rotation.set(.15,.08,-.13);
+    haze.position.set(0,0,-34);
+  }
+  layout();
+  addEventListener('resize',layout,{passive:true});
+
+  let raf=0;
+  let last=0;
+  function render(now){
+    raf=requestAnimationFrame(render);
+    if(document.hidden) return;
+    const elapsed=clock.getElapsedTime();
+    if(!reducedMotion && now-last>15){
+      const dt=Math.min((now-last)/1000,.04);
+      last=now;
+      earth.rotation.y += dt*.026;
+      cloudShell.rotation.y += dt*.038;
+      cloudShell.rotation.x = Math.sin(elapsed*.035)*.018;
+      stars.rotation.y += dt*.0008;
+      orbitGroup.rotation.y += dt*.012;
+      satellite.position.set(Math.cos(elapsed*.19)*3.16,Math.sin(elapsed*.19)*1.18,0);
+    }
+    earthMaterial.uniforms.uTime.value=elapsed;
+    cloudMaterial.uniforms.uTime.value=elapsed;
+    horizon.material.uniforms.uTime.value=elapsed;
+    haze.material.uniforms.uTime.value=elapsed;
+    renderer.render(scene,camera);
+  }
+  document.addEventListener('visibilitychange',()=>{
+    if(!document.hidden && !raf) raf=requestAnimationFrame(render);
+  });
+  raf=requestAnimationFrame(render);
+
+  // Release GPU resources if the page is being discarded or hot-reloaded.
+  addEventListener('pagehide',()=>{
+    cancelAnimationFrame(raf);
+    renderer.dispose();
+  },{once:true});
+})();
+</script>
 </body>
 </html>
