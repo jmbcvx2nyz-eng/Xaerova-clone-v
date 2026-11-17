@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#01060b">
-  <title>Eyes in the Sky — Coming Soon | XAEROVA</title>
-  <meta name="description" content="Eyes in the Sky. Coming soon. Autonomous drone infrastructure by XAEROVA.">
+  <title>Eyes in the Sky | XAEROVA</title>
+  <meta name="description" content="Eyes in the Sky. Drone docks and remote operations by XAEROVA.">
   <link rel="canonical" href="https://xaerova.com/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Eyes in the Sky — Coming Soon">
-  <meta property="og:description" content="Eyes in the Sky. Coming soon.">
+  <meta property="og:title" content="Eyes in the Sky">
+  <meta property="og:description" content="Eyes in the Sky. Drone docks and remote operations by XAEROVA.">
   <meta property="og:url" content="https://xaerova.com/">
   <script>
     (() => {
@@ -88,10 +88,12 @@
       opacity: 0;
       pointer-events: none;
     }
-    .brand-is-animating img { opacity: 0; }
+    .brand-is-animating img,
+    .brand-is-hidden img { opacity: 0; }
     .brand-is-animating .brand-motion { opacity: 1; }
     @media (prefers-reduced-motion: reduce) {
-      .brand-is-animating img { opacity: 1; }
+      .brand-is-animating img,
+      .brand-is-hidden img { opacity: 1; }
       .brand-is-animating .brand-motion { opacity: 0; }
     }
     .nav-links {
@@ -370,22 +372,24 @@
     }
     .signup-form {
       display: grid;
-      grid-template-columns: 100px 1fr;
+      grid-template-columns: 124px minmax(0, 1fr);
       align-items: center;
       gap: 7px 12px;
       padding: 18px 24px;
-      background: rgba(0,93,145,.78);
-      border: 1px solid rgba(76,190,255,.28);
+      background: rgba(0,41,62,.16);
+      border: 1px solid rgba(157,196,218,.16);
       border-radius: 20px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.08);
-      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.04);
+      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px);
       text-align: left;
     }
     .signup-form label {
-      color: rgba(255,255,255,.8);
+      color: rgba(255,255,255,.9);
       font-size: 12px;
       font-weight: 600;
       letter-spacing: .03em;
+      text-shadow: 0 1px 5px rgba(0,0,0,.65);
     }
     .signup-form input {
       width: 100%;
@@ -446,11 +450,11 @@
       text-shadow: none;
     }
     html[data-theme="light"] .signup-form {
-      background: rgba(249,248,245,.91);
-      border-color: #cec9bf;
-      box-shadow: 0 12px 40px rgba(70,65,56,.10), inset 0 1px 0 rgba(255,255,255,.7);
+      background: rgba(249,248,245,.5);
+      border-color: rgba(130,125,115,.28);
+      box-shadow: 0 12px 40px rgba(70,65,56,.06), inset 0 1px 0 rgba(255,255,255,.4);
     }
-    html[data-theme="light"] .signup-form label { color: #514d45; }
+    html[data-theme="light"] .signup-form label { color: #514d45; text-shadow: none; }
     html[data-theme="light"] .signup-form input { color: #2f2e2b; border-color: #c5bfb3; background: #fffefa; }
     html[data-theme="light"] .signup-form input:focus { border-color: var(--cyan); }
     html[data-theme="light"] .submit-button { background: #716c62; }
@@ -757,7 +761,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   <main class="site-main" id="mainContent">
     <section class="hero" id="coming-soon" aria-labelledby="mainHeadline" tabindex="-1">
       <h1 id="mainHeadline" data-i18n="headline">EYES IN THE SKY</h1>
-      <p class="coming-soon" data-i18n="coming-soon">COMING SOON</p>
       <a class="hero-link" href="#about-us"><span data-i18n="hero-discover">Discover XAerova</span><span aria-hidden="true">↓</span></a>
     </section>
 
@@ -818,7 +821,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 
     <div class="contact-section">
     <section class="signup" id="early-access" aria-labelledby="signupTitle" tabindex="-1">
-      <p class="section-kicker" data-i18n="contact-kicker">CONTACT</p>
       <h2 id="signupTitle" data-i18n="signup-title">BE AMONG THE FIRST</h2>
       <p class="contact-intro" data-i18n="contact-intro">Tell us a little about yourself to receive product updates, early access news and upcoming pre-order information.</p>
 
@@ -833,8 +835,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <label for="fullName" data-i18n="name">Name</label>
         <input id="fullName" name="Name" type="text" autocomplete="name" required>
 
-        <label for="companyName" data-i18n="company-name">Company</label>
-        <input id="companyName" name="Company" type="text" autocomplete="organization" required>
+        <label for="companyName" data-i18n="company-name">Company / sector</label>
+        <input id="companyName" name="Company / sector" type="text" autocomplete="organization" required>
 
         <label for="email" data-i18n="email">Email address</label>
         <input id="email" name="email" type="email" autocomplete="email" required>
@@ -849,7 +851,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     </section>
     <section class="launch" id="launch">
       <h2 data-i18n="launch-title">AVAILABLE Q1 2027</h2>
-      <p data-i18n="launch-copy">Get exclusive updates, early access and information about upcoming pre-orders.</p>
     </section>
     </div>
   </main>
@@ -858,10 +859,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     const translations = {
   "en": {
     "headline": "EYES IN THE SKY",
-    "coming-soon": "COMING SOON",
     "signup-title": "BE AMONG THE FIRST",
     "name": "Name",
-    "company-name": "Company",
+    "company-name": "Company / sector",
     "email": "Email address",
     "country": "Country",
     "submit": "GET EARLY ACCESS →",
@@ -871,7 +871,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     "form-network": "We couldn’t confirm delivery. Please check your connection and try again shortly.",
     "form-rate-limit": "Too many attempts. Please wait a moment and try again.",
     "launch-title": "AVAILABLE Q1 2027",
-    "launch-copy": "Get exclusive updates, early access and information about upcoming pre-orders.",
     "nav-about": "ABOUT US",
     "nav-skymind": "SKYMIND",
     "nav-contact": "CONTACT",
@@ -895,15 +894,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     "cert-title": "Certifications",
     "cert-copy": "Contact the XAerova team to discuss product certification and the documentation needed for your project.",
     "cert-link": "Talk to our team",
-    "contact-kicker": "CONTACT",
     "contact-intro": "Tell us a little about yourself to receive product updates, early access news and upcoming pre-order information."
   },
   "fr": {
     "headline": "DES YEUX DANS LE CIEL",
-    "coming-soon": "BIENTÔT DISPONIBLE",
     "signup-title": "SOYEZ PARMI LES PREMIERS",
     "name": "Nom",
-    "company-name": "Entreprise",
+    "company-name": "Entreprise / secteur",
     "email": "Adresse e-mail",
     "country": "Pays",
     "submit": "ACCÉDER EN AVANT-PREMIÈRE →",
@@ -913,7 +910,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     "form-network": "Nous n’avons pas pu confirmer l’envoi. Vérifiez votre connexion et réessayez dans un instant.",
     "form-rate-limit": "Trop de tentatives. Patientez un instant avant de réessayer.",
     "launch-title": "DISPONIBLE AU 1ER TRIMESTRE 2027",
-    "launch-copy": "Recevez des actualités exclusives, un accès anticipé et des informations sur les prochaines précommandes.",
     "nav-about": "À PROPOS",
     "nav-skymind": "SKYMIND",
     "nav-contact": "CONTACT",
@@ -937,7 +933,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     "cert-title": "Certifications",
     "cert-copy": "Contactez l’équipe XAerova pour échanger sur la certification du produit et la documentation nécessaire à votre projet.",
     "cert-link": "Échanger avec notre équipe",
-    "contact-kicker": "CONTACT",
     "contact-intro": "Présentez-vous en quelques mots pour recevoir les actualités du produit, les informations sur l’accès anticipé et les prochaines précommandes."
   }
 };
@@ -1062,10 +1057,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 
         // Capture every field before locking the inputs while the request runs.
         const payload = Object.fromEntries(new FormData(form));
-        for (const key of ['Name', 'Company', 'email', 'Country']) {
+        for (const key of ['Name', 'Company / sector', 'email', 'Country']) {
           payload[key] = String(payload[key] || '').trim();
         }
-        if (!payload['Name'] || !payload['Company'] || !payload.email || !payload.Country) {
+        if (!payload['Name'] || !payload['Company / sector'] || !payload.email || !payload.Country) {
           form.dataset.state = 'error';
           form.dataset.message = 'form-error';
           updateSignupState();
@@ -1562,7 +1557,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 })();
 
 
-    // Original 96 logo frames, played at 2x speed on every pointer hover.
+    // Play the original 96 frames at 2x speed; stay blank until the pointer leaves.
     (() => {
       const brand = document.querySelector('.brand');
       const canvas = document.getElementById('brandMotion');
@@ -1599,7 +1594,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         if (animationFrame) cancelAnimationFrame(animationFrame);
         animationFrame = 0;
         currentFrame = -1;
-        brand.classList.remove('brand-is-animating');
+        brand.classList.remove('brand-is-animating', 'brand-is-hidden');
         brand.dataset.logoMotion = 'ready';
         context.clearRect(0, 0, frameWidth, frameHeight);
       }
@@ -1615,8 +1610,16 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       function tick(now) {
         animationFrame = 0;
         const elapsed = now - startedAt;
-        if (elapsed >= duration || motionPreference.matches) {
+        if (motionPreference.matches) {
           restoreLogo();
+          return;
+        }
+        if (elapsed >= duration) {
+          // Keep the link and image dimensions intact so the hover target is stable.
+          brand.classList.remove('brand-is-animating');
+          brand.classList.add('brand-is-hidden');
+          brand.dataset.logoMotion = 'held';
+          context.clearRect(0, 0, frameWidth, frameHeight);
           return;
         }
         const index = Math.min(frameCount - 1, Math.floor(elapsed * framesPerSecond * playbackRate / 1000));
@@ -1648,6 +1651,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       }
 
       brand.addEventListener('pointerenter', playOnHover, { passive: true });
+      brand.addEventListener('pointerleave', restoreLogo, { passive: true });
+      brand.addEventListener('pointercancel', restoreLogo, { passive: true });
       const preferenceChanged = () => { if (motionPreference.matches) restoreLogo(); };
       if (motionPreference.addEventListener) motionPreference.addEventListener('change', preferenceChanged);
       else motionPreference.addListener(preferenceChanged);
@@ -1657,5 +1662,4 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   </script>
 </body>
 </html>
-
 
