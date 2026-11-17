@@ -17,16 +17,17 @@
       let theme = 'dark';
       try { if (localStorage.getItem('xaerova-theme') === 'light') theme = 'light'; } catch (_) {}
       document.documentElement.dataset.theme = theme;
-      document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#f3eee5' : '#01060b';
+      document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#ededed' : '#01060b';
     })();
   </script>
   <style id="page-styles">
 
-    :root { --blue: #078cff; --cyan: #00c8ff; --background-opacity: .38; }
+    :root { --blue: #078cff; --cyan: #00c8ff; --background-opacity: .38; --header-height: 62px; }
     * { box-sizing: border-box; }
-    html { background: #01060b; }
+    html { background: #01060b; scroll-padding-top: calc(var(--header-height) + 16px); }
     body {
       margin: 0;
+      padding-top: var(--header-height);
       min-width: 280px;
       min-height: 100vh;
       min-height: 100svh;
@@ -59,7 +60,7 @@
     }
     a { color: inherit; text-decoration: none; }
     .topbar {
-      height: 62px;
+      height: var(--header-height);
       width: 100%;
       padding: 0 clamp(18px, 4vw, 58px);
       display: grid;
@@ -68,8 +69,11 @@
       gap: 24px;
       background: rgba(0,0,0,.88);
       border-bottom: 1px solid rgba(255,255,255,.12);
-      position: relative;
-      z-index: 5;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
     }
     .brand { display: flex; align-items: center; width: fit-content; }
     .brand img { width: 112px; height: auto; max-height: 34px; object-fit: contain; }
@@ -158,6 +162,7 @@
     }
 
     @media (max-width: 760px) {
+      :root { --header-height: 64px; }
       /* On mobile, fade the lower Earth gently into the page background. */
       #earth-background {
         -webkit-mask-image: linear-gradient(to bottom,
@@ -173,8 +178,8 @@
         align-items: center;
         justify-content: flex-start;
         flex-wrap: nowrap;
-        height: 64px;
-        min-height: 64px;
+        height: var(--header-height);
+        min-height: var(--header-height);
         padding: 0 15px;
         gap: 12px;
       }
@@ -211,10 +216,14 @@
       .nav-links {
         display: none;
         position: absolute;
-        top: 64px;
+        top: var(--header-height);
         left: 0;
         right: 0;
         width: 100%;
+        max-height: calc(100vh - var(--header-height));
+        max-height: calc(100dvh - var(--header-height));
+        overflow-y: auto;
+        overscroll-behavior: contain;
         padding: 18px 15px;
         flex-direction: column;
         align-items: stretch;
@@ -346,43 +355,43 @@
     .theme-toggle svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
     .theme-toggle .theme-moon { display: none; }
     html[data-theme="light"] {
-      --blue: #786447;
-      --cyan: #7b6648;
+      --blue: #626262;
+      --cyan: #505050;
       --background-opacity: .92;
       color-scheme: light;
-      background: #f3eee5;
+      background: #ededed;
     }
-    html[data-theme="light"] body { color: #302d28; background: #f3eee5; }
-    html[data-theme="light"] #earth-background { background: #f3eee5; }
-    html[data-theme="light"] .topbar { background: rgba(250,247,241,.95); border-bottom-color: #d8cfc1; }
+    html[data-theme="light"] body { color: #292929; background: #ededed; }
+    html[data-theme="light"] #earth-background { background: #ededed; }
+    html[data-theme="light"] .topbar { background: rgba(248,248,248,.96); border-bottom-color: #d1d1d1; }
     html[data-theme="light"] .brand img { filter: invert(1); }
-    html[data-theme="light"] .nav-links { color: #524b41; }
-    html[data-theme="light"] .dropdown-menu { background: rgba(252,249,243,.98); border-color: #d8cfc1; box-shadow: 0 12px 30px rgba(73,56,34,.12); }
-    html[data-theme="light"] .dropdown-menu a { color: #524b41; }
-    html[data-theme="light"] .dropdown-menu a:hover { color: #5c482e; background: rgba(158,129,88,.13); }
-    html[data-theme="light"] .language-switch { border-color: #c9bdab; }
-    html[data-theme="light"] .language-switch button { color: #62574a; }
+    html[data-theme="light"] .nav-links { color: #4b4b4b; }
+    html[data-theme="light"] .dropdown-menu { background: rgba(250,250,250,.98); border-color: #d1d1d1; box-shadow: 0 12px 30px rgba(50,50,50,.12); }
+    html[data-theme="light"] .dropdown-menu a { color: #4b4b4b; }
+    html[data-theme="light"] .dropdown-menu a:hover { color: #333333; background: rgba(110,110,110,.10); }
+    html[data-theme="light"] .language-switch { border-color: #bfbfbf; }
+    html[data-theme="light"] .language-switch button { color: #555555; }
     html[data-theme="light"] .language-switch button.active { color: #fff; }
-    html[data-theme="light"] .theme-toggle { color: #665642; background: rgba(154,128,93,.08); border-color: #c9bdab; }
-    html[data-theme="light"] .theme-toggle:hover { color: #423423; border-color: #8a7353; background: rgba(154,128,93,.16); }
+    html[data-theme="light"] .theme-toggle { color: #555555; background: rgba(110,110,110,.08); border-color: #bfbfbf; }
+    html[data-theme="light"] .theme-toggle:hover { color: #333333; border-color: #888888; background: rgba(110,110,110,.16); }
     html[data-theme="light"] .theme-toggle .theme-sun { display: none; }
     html[data-theme="light"] .theme-toggle .theme-moon { display: block; }
     html[data-theme="light"] h1 { text-shadow: none; }
-    html[data-theme="light"] .coming-soon { color: #6d6152; }
-    html[data-theme="light"] .availability { color: #716555; }
-    html[data-theme="light"] .availability::before { background: #92754c; box-shadow: 0 0 10px rgba(146,117,76,.4); animation-name: signal-breathe-light; }
+    html[data-theme="light"] .coming-soon { color: #626262; }
+    html[data-theme="light"] .availability { color: #666666; }
+    html[data-theme="light"] .availability::before { background: #777777; box-shadow: 0 0 10px rgba(119,119,119,.4); animation-name: signal-breathe-light; }
     @keyframes signal-breathe-light {
-      0%, 100% { opacity: .4; box-shadow: 0 0 4px rgba(146,117,76,.2); }
-      50% { opacity: 1; box-shadow: 0 0 13px rgba(146,117,76,.55); }
+      0%, 100% { opacity: .4; box-shadow: 0 0 4px rgba(119,119,119,.2); }
+      50% { opacity: 1; box-shadow: 0 0 13px rgba(119,119,119,.55); }
     }
     @media (max-width: 760px) {
       .right-tools { gap: 8px; }
-      html[data-theme="light"] .mobile-menu-toggle { border-color: #c9bdab; background: rgba(154,128,93,.08); }
-      html[data-theme="light"] .mobile-menu-toggle span { background: #524b41; }
-      html[data-theme="light"] .nav-links { background: rgba(250,247,241,.98); border-bottom-color: #d8cfc1; box-shadow: 0 12px 25px rgba(73,56,34,.12); }
+      html[data-theme="light"] .mobile-menu-toggle { border-color: #bfbfbf; background: rgba(110,110,110,.08); }
+      html[data-theme="light"] .mobile-menu-toggle span { background: #4b4b4b; }
+      html[data-theme="light"] .nav-links { background: rgba(248,248,248,.98); border-bottom-color: #d1d1d1; box-shadow: 0 12px 25px rgba(50,50,50,.12); }
       html[data-theme="light"] .nav-links > a,
-      html[data-theme="light"] .nav-links .dropdown-trigger { border-bottom-color: #e3dace; }
-      html[data-theme="light"] .dropdown-menu { background: rgba(154,128,93,.08); box-shadow: none; }
+      html[data-theme="light"] .nav-links .dropdown-trigger { border-bottom-color: #dedede; }
+      html[data-theme="light"] .dropdown-menu { background: rgba(110,110,110,.08); box-shadow: none; }
     }
     @media (max-width: 300px) {
       .right-tools { gap: 6px; }
@@ -476,22 +485,22 @@
     }
     html[data-theme="light"] .signup h2,
     html[data-theme="light"] .launch h2 {
-      color: #342d23;
+      color: #292929;
       font-weight: 600;
       text-shadow: none;
     }
     html[data-theme="light"] .signup-form {
-      background: rgba(250,247,241,.91);
-      border-color: #cfc1ad;
-      box-shadow: 0 12px 40px rgba(83,64,37,.10), inset 0 1px 0 rgba(255,255,255,.7);
+      background: rgba(250,250,250,.91);
+      border-color: #c6c6c6;
+      box-shadow: 0 12px 40px rgba(50,50,50,.10), inset 0 1px 0 rgba(255,255,255,.7);
     }
-    html[data-theme="light"] .signup-form label { color: #51483b; }
-    html[data-theme="light"] .signup-form input { color: #302d28; border-color: #c5b8a5; background: #fffdf8; }
+    html[data-theme="light"] .signup-form label { color: #4c4c4c; }
+    html[data-theme="light"] .signup-form input { color: #292929; border-color: #bdbdbd; background: #fdfdfd; }
     html[data-theme="light"] .signup-form input:focus { border-color: var(--cyan); }
-    html[data-theme="light"] .submit-button { background: #786447; }
-    html[data-theme="light"] .submit-button:hover { background: #625036; }
+    html[data-theme="light"] .submit-button { background: #626262; }
+    html[data-theme="light"] .submit-button:hover { background: #494949; }
     html[data-theme="light"] .form-message,
-    html[data-theme="light"] .launch p { color: #51483b; }
+    html[data-theme="light"] .launch p { color: #4c4c4c; }
     @media (max-width: 760px) {
       .signup { width: 100%; max-width: 480px; margin-top: 34px; }
       .signup h2 { font-size: 23px; margin-bottom: 12px; }
@@ -759,7 +768,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       const selected = theme === 'light' ? 'light' : 'dark';
       document.documentElement.dataset.theme = selected;
       document.querySelector('meta[name="theme-color"]').content =
-        selected === 'light' ? '#f3eee5' : '#01060b';
+        selected === 'light' ? '#ededed' : '#01060b';
       if (remember) {
         try { localStorage.setItem('xaerova-theme', selected); } catch (_) {}
       }
@@ -1058,9 +1067,15 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           const relief = ((h - .5) * 42 + slope * 125 - strata) * coast;
           const shelf = (1 - Math.abs(coast * 2 - 1)) * 9;
           const seaDetail = (h - .5) * 7 * (1 - coast), offset = i * 3;
-          daySurface[offset] = 142 + coast * 66 + relief + shelf + seaDetail;
-          daySurface[offset + 1] = 164 + coast * 18 + relief * .90 + shelf + seaDetail;
-          daySurface[offset + 2] = 170 - coast * 32 + relief * .72 + shelf * .75 + seaDetail;
+          const red = 142 + coast * 66 + relief + shelf + seaDetail;
+          const green = 164 + coast * 18 + relief * .90 + shelf + seaDetail;
+          const blue = 170 - coast * 32 + relief * .72 + shelf * .75 + seaDetail;
+          // Keep the relief and coastlines while removing 92% of the colour.
+          const grey = red * .2126 + green * .7152 + blue * .0722;
+          const saturation = .08;
+          daySurface[offset] = grey + (red - grey) * saturation;
+          daySurface[offset + 1] = grey + (green - grey) * saturation;
+          daySurface[offset + 2] = grey + (blue - grey) * saturation;
         }
       }
     }
@@ -1075,13 +1090,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     starLight.addColorStop(.32, 'rgba(113,199,245,.18)');
     starLight.addColorStop(1, 'rgba(74,176,238,0)');
     starCtx.fillStyle = starLight; starCtx.fillRect(0, 0, 32, 32);
-    const amberSprite = make(40, 40), amberCtx = amberSprite.getContext('2d');
-    const amberLight = amberCtx.createRadialGradient(20, 20, 0, 20, 20, 20);
-    amberLight.addColorStop(0, 'rgba(210,137,70,.96)');
-    amberLight.addColorStop(.13, 'rgba(229,163,95,.82)');
-    amberLight.addColorStop(.36, 'rgba(240,183,119,.24)');
-    amberLight.addColorStop(1, 'rgba(245,193,137,0)');
-    amberCtx.fillStyle = amberLight; amberCtx.fillRect(0, 0, 40, 40);
     let shiningStars = [], dayStars = [];
     let width, height, top, pixels, map, count = 0, horizon = [], raf = 0, last = 0, elapsed = 0, frames = 0, dead = false;
     let resizeFrame = 0, ready = false, orbitOffset = 0, windOffset = 0;
@@ -1097,11 +1105,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       const scale = width / 1365;
       const gradient = context.createLinearGradient(0, 0, width, 0);
       if (lightMode) {
-        gradient.addColorStop(0, 'rgba(228,224,212,' + strength * .40 + ')');
-        gradient.addColorStop(.25, 'rgba(248,244,232,' + strength * .74 + ')');
-        gradient.addColorStop(.60, 'rgba(255,255,251,' + strength + ')');
-        gradient.addColorStop(.83, 'rgba(255,252,240,' + strength * .96 + ')');
-        gradient.addColorStop(1, 'rgba(241,237,223,' + strength * .70 + ')');
+        gradient.addColorStop(0, 'rgba(224,224,224,' + strength * .40 + ')');
+        gradient.addColorStop(.25, 'rgba(246,246,246,' + strength * .74 + ')');
+        gradient.addColorStop(.60, 'rgba(255,255,255,' + strength + ')');
+        gradient.addColorStop(.83, 'rgba(253,253,253,' + strength * .96 + ')');
+        gradient.addColorStop(1, 'rgba(237,237,237,' + strength * .70 + ')');
       } else {
       gradient.addColorStop(0, 'rgba(8,143,181,' + strength * .32 + ')');
       gradient.addColorStop(.25, 'rgba(61,201,248,' + strength * .69 + ')');
@@ -1193,25 +1201,25 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       dayStars = [];
       if (lightMode) {
         buildDaylightTexture();
-        // Clear warm daylight, with a restrained amber star field.
+        // Neutral daylight with gently moving grey plus-shaped stars.
         const daySky = skyCtx.createLinearGradient(0, 0, 0, height);
-        daySky.addColorStop(0, '#f1eadf');
-        daySky.addColorStop(.46, '#f7f2e9');
-        daySky.addColorStop(1, '#e6e0d4');
+        daySky.addColorStop(0, '#e8e8e8');
+        daySky.addColorStop(.46, '#f4f4f4');
+        daySky.addColorStop(1, '#dedede');
         skyCtx.fillStyle = daySky; skyCtx.fillRect(0, 0, width, height);
         const sunHaze = skyCtx.createRadialGradient(width * .66, height * .43, 0, width * .66, height * .43, width * .65);
-        sunHaze.addColorStop(0, 'rgba(255,252,245,.25)');
-        sunHaze.addColorStop(.40, 'rgba(255,250,237,.06)');
-        sunHaze.addColorStop(1, 'rgba(255,250,237,0)');
+        sunHaze.addColorStop(0, 'rgba(255,255,255,.25)');
+        sunHaze.addColorStop(.40, 'rgba(255,255,255,.06)');
+        sunHaze.addColorStop(1, 'rgba(255,255,255,0)');
         skyCtx.fillStyle = sunHaze; skyCtx.fillRect(0, 0, width, height);
-        let amberSeed = 89237;
-        const amberRandom = () => { amberSeed = (Math.imul(amberSeed, 1103515245) + 12345) >>> 0; return amberSeed / 4294967296; };
+        let dayStarSeed = 89237;
+        const dayStarRandom = () => { dayStarSeed = (Math.imul(dayStarSeed, 1103515245) + 12345) >>> 0; return dayStarSeed / 4294967296; };
         const total = Math.round(clamp(width * height / 14000, 24, 65));
         for (let i = 0; i < total; i++) {
-          dayStars.push({ u: .025 + amberRandom() * .95, v: .055 + amberRandom() * .36,
-            size: 5.5 + amberRandom() * 5.5, phase: amberRandom() * TAU,
-            speed: .85 + amberRandom() * .85, drift: .55 + amberRandom() * .60,
-            sway: .6 + amberRandom() * 1.8 });
+          dayStars.push({ u: .025 + dayStarRandom() * .95, v: .055 + dayStarRandom() * .36,
+            size: 7.5 + dayStarRandom() * 5, phase: dayStarRandom() * TAU,
+            speed: .85 + dayStarRandom() * .85, drift: .55 + dayStarRandom() * .60,
+            sway: .6 + dayStarRandom() * 1.8 });
         }
       } else {
       skyCtx.fillStyle = '#01050a'; skyCtx.fillRect(0, 0, width, height);
@@ -1288,9 +1296,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           const daylight = (.92 + map.shade[i] * .08) * (1 - cover * .05);
           const cloudWhite = ease(.18, .84, cover) * .54;
           const clear = 1 - cloudWhite, haze = fog * .24, ground = 1 - haze;
-          output[target] = (red * daylight * clear + 253 * cloudWhite) * ground + 244 * haze;
-          output[target + 1] = (green * daylight * clear + 251 * cloudWhite) * ground + 242 * haze;
-          output[target + 2] = (blue * daylight * clear + 246 * cloudWhite) * ground + 233 * haze;
+          output[target] = (red * daylight * clear + 250 * cloudWhite) * ground + 242 * haze;
+          output[target + 1] = (green * daylight * clear + 250 * cloudWhite) * ground + 242 * haze;
+          output[target + 2] = (blue * daylight * clear + 250 * cloudWhite) * ground + 242 * haze;
           continue;
         }
         const shine = .57 + cityPulseX[x0] ** 2 * .66 + cityPulseY[row / MW] ** 2 * .37;
@@ -1307,11 +1315,17 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       if (lightMode) {
         for (const star of dayStars) {
           const pulse = .5 + .5 * Math.sin(elapsed * star.speed + star.phase);
-          const size = star.size * (.82 + pulse * .30);
+          const size = star.size * (.90 + pulse * .10);
           const x = fract(star.u + elapsed * .00085 * star.drift) * width;
           const y = star.v * height + Math.sin(elapsed * .24 + star.phase) * star.sway;
-          ctx.globalAlpha = .14 + pulse * pulse * .76;
-          ctx.drawImage(amberSprite, x - size / 2, y - size / 2, size, size);
+          const thickness = Math.max(.8, size * .135);
+          ctx.globalAlpha = .20 + pulse * pulse * .50;
+          ctx.fillStyle = '#7b7b7b';
+          // One path keeps the centre the same shade as both arms.
+          ctx.beginPath();
+          ctx.rect(x - size / 2, y - thickness / 2, size, thickness);
+          ctx.rect(x - thickness / 2, y - size / 2, thickness, size);
+          ctx.fill();
         }
       }
       for (const star of shiningStars) {
@@ -1353,3 +1367,4 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   </script>
 </body>
 </html>
+
