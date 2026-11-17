@@ -107,58 +107,7 @@
       color: rgba(255,255,255,.8);
     }
     .nav-links a { transition: color .2s ease; }
-    .nav-links a:hover, .dropdown-trigger:hover { color: var(--cyan); }
-    .dropdown { position: relative; }
-    .dropdown-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 10px 0;
-      border: 0;
-      color: inherit;
-      background: transparent;
-      cursor: pointer;
-      font: inherit;
-      line-height: 1;
-      letter-spacing: inherit;
-    }
-    .dropdown-arrow {
-      display: block;
-      width: 9px;
-      height: 9px;
-      flex: 0 0 9px;
-      transition: transform .2s ease;
-    }
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 220px;
-      padding: 8px;
-      background: rgba(2, 12, 25, .97);
-      border: 1px solid rgba(0, 150, 255, .42);
-      border-radius: 5px;
-      box-shadow: 0 12px 30px rgba(0,0,0,.35);
-      backdrop-filter: blur(14px);
-      z-index: 20;
-      letter-spacing: .08em;
-      white-space: normal;
-    }
-    .dropdown-menu a {
-      display: block;
-      padding: 12px 13px;
-      color: rgba(255,255,255,.9);
-      font: 600 12px "XAerova Text", sans-serif;
-      letter-spacing: .08em;
-    }
-    .dropdown-menu a:hover {
-      color: var(--cyan);
-      background: rgba(0,140,255,.14);
-    }
-    .dropdown.open .dropdown-menu { display: block; }
-    .dropdown.open .dropdown-arrow { transform: rotate(180deg); }
-
+    .nav-links a:hover { color: var(--cyan); }
     .right-tools { display: flex; align-items: center; justify-content: flex-end; gap: 14px; }
     .language-switch {
       display: inline-flex;
@@ -260,25 +209,12 @@
         letter-spacing: .18em;
       }
       .nav-links.mobile-open { display: flex; }
-      .nav-links > a, .nav-links .dropdown-trigger {
+      .nav-links > a {
         display: flex;
         width: 100%;
         padding: 15px 10px;
         justify-content: space-between;
         border-bottom: 1px solid rgba(255,255,255,.08);
-      }
-      .dropdown { width: 100%; }
-      .dropdown-menu {
-        position: static;
-        width: 100%;
-        min-width: 0;
-        transform: none;
-        margin: 0;
-        padding: 5px 10px;
-        border: 0;
-        border-radius: 0;
-        background: rgba(0,100,180,.12);
-        box-shadow: none;
       }
     }
     @media (max-width: 340px) {
@@ -391,9 +327,6 @@
     html[data-theme="light"] .brand img,
     html[data-theme="light"] .brand-motion { filter: invert(1); }
     html[data-theme="light"] .nav-links { color: #514e48; }
-    html[data-theme="light"] .dropdown-menu { background: rgba(251,250,247,.98); border-color: #d4d0c8; box-shadow: 0 12px 30px rgba(64,60,53,.12); }
-    html[data-theme="light"] .dropdown-menu a { color: #514e48; }
-    html[data-theme="light"] .dropdown-menu a:hover { color: #49443c; background: rgba(133,126,115,.13); }
     html[data-theme="light"] .language-switch { border-color: #c7c2b8; }
     html[data-theme="light"] .language-switch button { color: #605b53; }
     html[data-theme="light"] .language-switch button.active { color: #fff; }
@@ -414,9 +347,7 @@
       html[data-theme="light"] .mobile-menu-toggle { border-color: #c7c2b8; background: rgba(132,125,114,.08); }
       html[data-theme="light"] .mobile-menu-toggle span { background: #514e48; }
       html[data-theme="light"] .nav-links { background: rgba(249,248,245,.98); border-bottom-color: #d4d0c8; box-shadow: 0 12px 25px rgba(64,60,53,.12); }
-      html[data-theme="light"] .nav-links > a,
-      html[data-theme="light"] .nav-links .dropdown-trigger { border-bottom-color: #e0dcd4; }
-      html[data-theme="light"] .dropdown-menu { background: rgba(132,125,114,.08); box-shadow: none; }
+      html[data-theme="light"] .nav-links > a { border-bottom-color: #e0dcd4; }
     }
     @media (max-width: 300px) {
       .right-tools { gap: 6px; }
@@ -545,6 +476,136 @@
     @media (max-width: 390px) { .signup-form { padding: 16px; } }
     @media (prefers-reduced-motion: reduce) { .submit-button { transition: none; } }
 
+    html { scroll-behavior: smooth; }
+    .site-main { position: relative; z-index: 1; padding-bottom: 40px; }
+    .hero {
+      min-height: calc(100vh - var(--header-height));
+      min-height: calc(100svh - var(--header-height));
+    }
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 38px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.38);
+      color: #dceaf1;
+      font-size: 16px;
+      letter-spacing: .04em;
+    }
+    .hero-link:hover { color: var(--cyan); border-color: currentColor; }
+    .content-section {
+      width: min(1056px, calc(100% - 48px));
+      margin: 0 auto 32px;
+      padding: clamp(32px, 5.4vw, 72px);
+      border: 1px solid rgba(185,215,234,.16);
+      border-radius: 18px;
+      background: rgba(3,13,23,.91);
+      color: #eff7fb;
+      text-align: left;
+      box-shadow: 0 16px 64px rgba(0,0,0,.12);
+      backdrop-filter: blur(14px);
+    }
+    .section-heading { margin-bottom: 32px; }
+    .section-kicker {
+      margin: 0 0 16px;
+      color: #a7c6d7;
+      font: 600 12px/1.45 "XAerova Text", Arial, sans-serif;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .section-heading h2 {
+      margin: 0;
+      font: 600 clamp(25px, 3.2vw, 42px)/1.25 "XAerova Display", Arial, sans-serif;
+      letter-spacing: .015em;
+    }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(28px, 5vw, 64px); }
+    .section-lead {
+      max-width: 30ch;
+      margin: 0;
+      color: #f2f8fb;
+      font-size: clamp(25px, 2.5vw, 34px);
+      font-weight: 500;
+      line-height: 1.35;
+      text-wrap: balance;
+    }
+    .section-copy {
+      max-width: 64ch;
+      margin: 0;
+      color: #bacbd5;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+    .section-copy p { margin: 0 0 16px; }
+    .section-copy p:last-child { margin-bottom: 0; }
+    .mission-block { margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(185,215,234,.2); }
+    .mission-statement { max-width: 48ch; margin: 0; font-size: clamp(22px, 2.25vw, 29px); line-height: 1.45; text-wrap: balance; }
+    .product-intro { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(28px, 5vw, 64px); }
+    .product-features { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 28px; margin-top: 44px; }
+    .product-features article { padding-top: 20px; border-top: 1px solid rgba(185,215,234,.2); }
+    .feature-number { color: #8badbf; font-size: 13px; letter-spacing: .08em; }
+    .product-features h3 { margin: 16px 0 8px; font-size: 22px; font-weight: 600; line-height: 1.25; }
+    .product-features p { margin: 0; color: #bacbd5; font-size: 17px; line-height: 1.6; }
+    .certification-block {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(185,215,234,.2);
+    }
+    .certification-block h3 { margin: 0 0 8px; font-size: 22px; font-weight: 600; line-height: 1.3; }
+    .certification-block p { max-width: 55ch; margin: 0; color: #bacbd5; font-size: 16px; line-height: 1.6; }
+    .section-link { display: inline-flex; align-items: center; gap: 12px; flex: 0 0 auto; padding: 10px 0; color: #e1f2fc; border-bottom: 1px solid #8badbf; font-size: 16px; }
+    .section-link:hover { color: var(--cyan); }
+    .contact-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: clamp(48px, 8vw, 96px) 24px 72px;
+      min-height: calc(100svh - var(--header-height));
+      text-align: center;
+    }
+    .contact-section .signup { margin-top: 0; }
+    .contact-intro { max-width: 52ch; margin: 0 auto 22px; color: #bacbd5; font-size: 17px; line-height: 1.5; }
+    html[data-theme="light"] .hero-link { color: #514d45; border-color: #999286; }
+    html[data-theme="light"] .content-section {
+      color: #302e2a;
+      background: rgba(249,248,245,.95);
+      border-color: #d5d0c6;
+      box-shadow: 0 16px 64px rgba(70,65,56,.06);
+    }
+    html[data-theme="light"] .section-kicker,
+    html[data-theme="light"] .feature-number { color: #706a60; }
+    html[data-theme="light"] .section-lead { color: #302e2a; }
+    html[data-theme="light"] .section-copy,
+    html[data-theme="light"] .product-features p,
+    html[data-theme="light"] .certification-block p,
+    html[data-theme="light"] .contact-intro { color: #57524a; }
+    html[data-theme="light"] .mission-block,
+    html[data-theme="light"] .product-features article,
+    html[data-theme="light"] .certification-block { border-color: #d5d0c6; }
+    html[data-theme="light"] .section-link { color: #514d45; border-color: #999286; }
+    @media (max-width: 760px) {
+      .content-section { width: calc(100% - 32px); margin-bottom: 24px; padding: 28px 22px; border-radius: 14px; }
+      .about-grid, .product-intro { grid-template-columns: 1fr; gap: 22px; }
+      .section-heading { margin-bottom: 24px; }
+      .section-lead { max-width: 34ch; font-size: 27px; }
+      .section-copy { font-size: 17px; }
+      .mission-block { margin-top: 28px; padding-top: 24px; }
+      .product-features { grid-template-columns: 1fr; gap: 24px; margin-top: 30px; }
+      .product-features h3 { margin-top: 10px; }
+      .certification-block { flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 28px; padding-top: 24px; }
+      .contact-section { padding: 42px 18px 56px; }
+      .contact-intro { font-size: 16px; }
+    }
+    @media (max-width: 340px) {
+      .content-section { width: calc(100% - 24px); padding: 26px 18px; }
+      .section-lead { font-size: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
   </style>
   <style id="font-display-600">
 @font-face{font-family:'XAerova Display';font-style:normal;font-weight:600;font-display:swap;src:url("data:font/woff2;base64,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") format('woff2')}
@@ -660,28 +721,15 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     <canvas id="xaerova-earth"></canvas>
   </div>
   <header class="topbar">
-    <a class="brand" href="#" aria-label="XAEROVA home">
+    <a class="brand" href="#coming-soon" aria-label="XAEROVA home">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAAAaCAMAAACZ+qCsAAAAYFBMVEWmpqbi4+Lq6urg4OBcW17c3t4sLyykpKS04eG9wcE/Xz+IiHcAAAD8/Pz////X2NjX19e6u7unqKfo6eno6Ojo6eny8vLHx8d8fHzIycna29vk5OTGxsbZ2djs7Oy2t7e8rZDoAAAAIHRSTlMfK6VkCM8JUhlVCA8A/AJUcxMLy4600DAFSo5vEwrjS42gQjUAAAUHSURBVHjalViJlqMqEEXNZGbeq2DABbd0//9fTrGUlAgmXd3HqCBwa70g4CASMkIvp2yjF9h/4J2wLhe95QcjJWvOfiDse1MFUZkp8Y12jS/4bMr/QKuy6LgSN9drU5t9v7kr3m8oeAkr9o3qs6mnPMBJmu4RpD3pAR+b0ChASai7X0G6zl+thB93+xv6x4WMvfFz4KWqx2K3urFd/vqnuohwkrobvTxBZQHit7d9Sf3t0AuVrGpq627YVXSPa/l1uwaI8rTLRccYrrt1BjZ40ieq5KBxFAE6C9BO1+6aM0xZ1nxMx8NNarjX18vCEd8BREfBEBPju24Pgwquy4t3K3zyueWUBWgNJTo+e7A+vI5oBkCEsFyt6Rvn9ADHgUs3ovsSpM5OsdInXydh88nJP3Uil3U0CN9zof55gGAdILqpD0QVo+8RmyTCnr8K6L4WAX8IoMlFTNC3Rk15tN0s7kmn+6TaoO4/NigepcUj/FsXGttCrAoWbS1zfpulo/l63bPwwTnn71RmfOUDmgC28iwQIgbBv/yAt0Ly8PBXkCqG4TnDkzcJumvTToL3NmNMAxBdaJzxqY4OfJGzbQwQwDmr8pUCtfKuBa9QPRNNNOQxMY2YNAwVzI8wFeb3LowsSwCxZdrddDHRfPiNlhMlqwrHnaR84R9K9eKy+cX1eWVmAebruZRtBEh+2OljDtm9d/FuRd4/lQAesik3n0vqisxr3lbdaEGptbaYtbQ/eB/8QkcLFsgTiymdD8MIfHIeEMzZ3Q46EylrMcfkbc0XyvJGLZt1laZ/ZqVZvi9cFKYxddH3ACEfhnsABtel5+OQ4jQyL78jYzaInd6iNcj7M/I3AhStp4CGLutIZeInADkWxjznBDUF60EN4sR8yB9CV8lCumLlCX6X+MedASyUzPmnAMkbvzQtCCla6reSXhlGe0SReXoPnQ68po0It3ORTJiMSzJiyFO1nwFEHzQJnD23anky6peOo4okBKuEiI0VxNS17Qj7EsJuBp5FcZ5Ipbx7jqtwDT8CGMNwIad9Ps65mlD7tJMpE3HNO6vCWhsNHvnVChvqiycX9//ttMQsaDdbVHsaoYzxZCAClJcAe5YC6r3mMYsuSWL9f0wYjcibb2XMrd5iJMr9dQulpSV1EC9miDnLsku3ddtoJRmZXqFeMoAUhraU79GW1IQYRXuiEcx8O3WpK8fcRrZL1CeElj3I1ytdm9JpoZfMTwcDBHvbQzYrHVG1E692TH0o7DF2V6YiJfLmS/ZrMdfEsYsF/8xkJBtrndyOBNtCSLZKa6WFQEog9v92INqk2dobcstLejrsfJ5tl1j0DbG0xwRhd4lkj4k0oUCapkVxlyDNTAAr4CUG6NjA1VarsObtdtB6YI5az/pqg6GYoWlHD1Uupxx4zUolf6KNzmMUYM4bpwVyXJT7aWdczXq/Lz7oyH5zD0rqThUiw1B9/Iqj+XoFnNBKuPcsMOkl0dIBMoRGFci2ZkWxV4eUXD6ykPm1P4psnlcQ58DWHxtWxE5DQjyRWjevsT1HPwadInQnHoXdhOXyNNgirPpNXz50Gs4HYHF/dHkQtYfhbDOTBdisXkTu1BDuodKtuF2fiJb6VwtuNE3L5WbJnnna2/NZH44++W5YMadwblBR8PJhquqWPejE2uu+thOI0skpVhQ3yGpVLN6e++qrs9bzJ/KzQ9r3p7tSfjDAe/kHmo4vnM/21zEAAAAASUVORK5CYII=" alt="XAEROVA">
       <canvas class="brand-motion" id="brandMotion" width="324" height="96" aria-hidden="true"></canvas>
     </a>
 
     <nav class="nav-links" id="mainNavigation" aria-label="Main navigation">
-      <a href="mailto:info@xaerova.com?subject=XAEROVA%20Investor%20Enquiry" data-i18n="nav-investors">INVESTORS</a>
-      <a href="mailto:info@xaerova.com?subject=XAEROVA%20Press%20Enquiry" data-i18n="nav-press">PRESS</a>
-      <div class="dropdown" id="useCasesDropdown">
-        <button class="dropdown-trigger" type="button" id="useCasesButton"
-          aria-expanded="false" aria-controls="useCasesMenu">
-          <span data-i18n="nav-usecases">USE CASES</span>
-          <svg class="dropdown-arrow" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false">
-            <path d="M2.5 4.25 6 7.75 9.5 4.25" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="dropdown-menu" id="useCasesMenu">
-          <a href="#early-access" data-i18n="nav-agriculture">Agriculture</a>
-          <a href="#early-access" data-i18n="nav-security">Security &amp; Defense</a>
-          <a href="#early-access" data-i18n="nav-nature">Nature Protection</a>
-        </div>
-      </div>
+      <a href="#about-us" data-i18n="nav-about">ABOUT US</a>
+      <a href="#skymind" data-i18n="nav-skymind">SKYMIND</a>
+      <a href="#early-access" data-i18n="nav-contact">CONTACT</a>
     </nav>
 
     <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button"
@@ -706,12 +754,73 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       </div>
     </div>
   </header>
-  <main class="hero" id="coming-soon">
-    <h1 data-i18n="headline">EYES IN THE SKY</h1>
-    <p class="coming-soon" data-i18n="coming-soon">COMING SOON</p>
+  <main class="site-main" id="mainContent">
+    <section class="hero" id="coming-soon" aria-labelledby="mainHeadline" tabindex="-1">
+      <h1 id="mainHeadline" data-i18n="headline">EYES IN THE SKY</h1>
+      <p class="coming-soon" data-i18n="coming-soon">COMING SOON</p>
+      <a class="hero-link" href="#about-us"><span data-i18n="hero-discover">Discover XAerova</span><span aria-hidden="true">↓</span></a>
+    </section>
 
-    <section class="signup" id="early-access" aria-labelledby="signupTitle">
+    <section class="content-section" id="about-us" aria-labelledby="aboutTitle" tabindex="-1">
+      <div class="section-heading">
+        <p class="section-kicker">XAEROVA</p>
+        <h2 id="aboutTitle" data-i18n="about-title">About Us</h2>
+      </div>
+      <div class="about-grid">
+        <p class="section-lead" data-i18n="about-lead">A better view of the places that matter.</p>
+        <div class="section-copy">
+          <p data-i18n="about-copy">XAerova is developing drone docks and browser-based tools that make aerial observation more practical for the teams on the ground.</p>
+          <p data-i18n="about-docks">A drone dock gives an aircraft a home base: somewhere to launch, return, land and recharge. We connect that hardware with a simple remote operations experience.</p>
+          <p data-i18n="about-uses">From agriculture and site monitoring to infrastructure inspection and nature protection, our focus is helping people see more clearly and make better-informed decisions.</p>
+        </div>
+      </div>
+      <div class="mission-block">
+        <h3 class="section-kicker" data-i18n="mission-title">OUR MISSION</h3>
+        <p class="mission-statement" data-i18n="mission-copy">Make aerial visibility easier to access, simpler to manage and useful in everyday operations.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="skymind" aria-labelledby="skymindTitle" tabindex="-1">
+      <div class="section-heading">
+        <p class="section-kicker" data-i18n="product-kicker">THE PRODUCT</p>
+        <h2 id="skymindTitle">SkyMind</h2>
+      </div>
+      <div class="product-intro">
+        <p class="section-lead" data-i18n="product-lead">Your drone. Its home base. One connected experience.</p>
+        <p class="section-copy" data-i18n="product-copy">SkyMind brings together XAerova’s drone dock and remote operations platform. It is being developed to connect remote launch, live viewing and return-to-dock through a web browser, with AI-assisted landing and charging between missions.</p>
+      </div>
+      <div class="product-features">
+        <article>
+          <span class="feature-number" aria-hidden="true">01</span>
+          <h3 data-i18n="feature-dock-title">The dock</h3>
+          <p data-i18n="feature-dock-copy">A dedicated home for the aircraft, designed to house, align and recharge it between flights.</p>
+        </article>
+        <article>
+          <span class="feature-number" aria-hidden="true">02</span>
+          <h3 data-i18n="feature-browser-title">The browser</h3>
+          <p data-i18n="feature-browser-copy">A connected interface for live viewing, site status and the remote flight workflow, accessible from a laptop.</p>
+        </article>
+        <article>
+          <span class="feature-number" aria-hidden="true">03</span>
+          <h3 data-i18n="feature-return-title">The return</h3>
+          <p data-i18n="feature-return-copy">AI-assisted landing and a coordinated return-to-dock process, designed to prepare the drone for its next mission.</p>
+        </article>
+      </div>
+      <!-- Add specific certification claims only after the referenced supporting document is supplied. -->
+      <div class="certification-block">
+        <div>
+          <h3 data-i18n="cert-title">Certifications</h3>
+          <p data-i18n="cert-copy">Contact the XAerova team to discuss product certification and the documentation needed for your project.</p>
+        </div>
+        <a class="section-link" href="#early-access"><span data-i18n="cert-link">Talk to our team</span><span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <div class="contact-section">
+    <section class="signup" id="early-access" aria-labelledby="signupTitle" tabindex="-1">
+      <p class="section-kicker" data-i18n="contact-kicker">CONTACT</p>
       <h2 id="signupTitle" data-i18n="signup-title">BE AMONG THE FIRST</h2>
+      <p class="contact-intro" data-i18n="contact-intro">Tell us a little about yourself to receive product updates, early access news and upcoming pre-order information.</p>
 
       <!-- FormSubmit sends registrations to the owner's activated inbox.
            AJAX keeps visitors on this page; CAPTCHA is disabled. -->
@@ -738,48 +847,100 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <noscript><p class="form-message">Please enable JavaScript to register for early access.</p></noscript>
       </form>
     </section>
-
     <section class="launch" id="launch">
       <h2 data-i18n="launch-title">AVAILABLE Q1 2027</h2>
       <p data-i18n="launch-copy">Get exclusive updates, early access and information about upcoming pre-orders.</p>
     </section>
+    </div>
   </main>
   <script>
 
     const translations = {
-      en: {
-        "nav-investors": "INVESTORS", "nav-press": "PRESS",
-        "nav-usecases": "USE CASES", "nav-agriculture": "AGRICULTURE",
-        "nav-security": "SECURITY & DEFENSE", "nav-nature": "NATURE PROTECTION",
-        "headline": "EYES IN THE SKY", "coming-soon": "COMING SOON",
-        "signup-title": "BE AMONG THE FIRST",
-        "name": "Name", "company-name": "Company",
-        "email": "Email address", "country": "Country",
-        "submit": "GET EARLY ACCESS →", "sending": "SENDING…",
-        "success": "Thank you — you’re on the list. We’ll keep you updated.",
-        "form-error": "We couldn’t submit your request. Your details are still here; please try again shortly.",
-        "form-network": "We couldn’t confirm delivery. Please check your connection and try again shortly.",
-        "form-rate-limit": "Too many attempts. Please wait a moment and try again.",
-        "launch-title": "AVAILABLE Q1 2027",
-        "launch-copy": "Get exclusive updates, early access and information about upcoming pre-orders."
-      },
-      fr: {
-        "nav-investors": "INVESTISSEURS", "nav-press": "PRESSE",
-        "nav-usecases": "APPLICATIONS", "nav-agriculture": "AGRICULTURE",
-        "nav-security": "SÉCURITÉ & DÉFENSE", "nav-nature": "PROTECTION DE LA NATURE",
-        "headline": "DES YEUX DANS LE CIEL", "coming-soon": "BIENTÔT DISPONIBLE",
-        "signup-title": "SOYEZ PARMI LES PREMIERS",
-        "name": "Nom", "company-name": "Entreprise",
-        "email": "Adresse e-mail", "country": "Pays",
-        "submit": "ACCÉDER EN AVANT-PREMIÈRE →", "sending": "ENVOI EN COURS…",
-        "success": "Merci — vous êtes sur la liste. Nous vous tiendrons au courant.",
-        "form-error": "Votre demande n’a pas pu être envoyée. Vos informations sont conservées ; veuillez réessayer dans un instant.",
-        "form-network": "Nous n’avons pas pu confirmer l’envoi. Vérifiez votre connexion et réessayez dans un instant.",
-        "form-rate-limit": "Trop de tentatives. Patientez un instant avant de réessayer.",
-        "launch-title": "DISPONIBLE AU 1ER TRIMESTRE 2027",
-        "launch-copy": "Recevez des actualités exclusives, un accès anticipé et des informations sur les prochaines précommandes."
-      }
-    };
+  "en": {
+    "headline": "EYES IN THE SKY",
+    "coming-soon": "COMING SOON",
+    "signup-title": "BE AMONG THE FIRST",
+    "name": "Name",
+    "company-name": "Company",
+    "email": "Email address",
+    "country": "Country",
+    "submit": "GET EARLY ACCESS →",
+    "sending": "SENDING…",
+    "success": "Thank you — you’re on the list. We’ll keep you updated.",
+    "form-error": "We couldn’t submit your request. Your details are still here; please try again shortly.",
+    "form-network": "We couldn’t confirm delivery. Please check your connection and try again shortly.",
+    "form-rate-limit": "Too many attempts. Please wait a moment and try again.",
+    "launch-title": "AVAILABLE Q1 2027",
+    "launch-copy": "Get exclusive updates, early access and information about upcoming pre-orders.",
+    "nav-about": "ABOUT US",
+    "nav-skymind": "SKYMIND",
+    "nav-contact": "CONTACT",
+    "hero-discover": "Discover XAerova",
+    "about-title": "About Us",
+    "about-lead": "A better view of the places that matter.",
+    "about-copy": "XAerova is developing drone docks and browser-based tools that make aerial observation more practical for the teams on the ground.",
+    "about-docks": "A drone dock gives an aircraft a home base: somewhere to launch, return, land and recharge. We connect that hardware with a simple remote operations experience.",
+    "about-uses": "From agriculture and site monitoring to infrastructure inspection and nature protection, our focus is helping people see more clearly and make better-informed decisions.",
+    "mission-title": "OUR MISSION",
+    "mission-copy": "Make aerial visibility easier to access, simpler to manage and useful in everyday operations.",
+    "product-kicker": "THE PRODUCT",
+    "product-lead": "Your drone. Its home base. One connected experience.",
+    "product-copy": "SkyMind brings together XAerova’s drone dock and remote operations platform. It is being developed to connect remote launch, live viewing and return-to-dock through a web browser, with AI-assisted landing and charging between missions.",
+    "feature-dock-title": "The dock",
+    "feature-dock-copy": "A dedicated home for the aircraft, designed to house, align and recharge it between flights.",
+    "feature-browser-title": "The browser",
+    "feature-browser-copy": "A connected interface for live viewing, site status and the remote flight workflow, accessible from a laptop.",
+    "feature-return-title": "The return",
+    "feature-return-copy": "AI-assisted landing and a coordinated return-to-dock process, designed to prepare the drone for its next mission.",
+    "cert-title": "Certifications",
+    "cert-copy": "Contact the XAerova team to discuss product certification and the documentation needed for your project.",
+    "cert-link": "Talk to our team",
+    "contact-kicker": "CONTACT",
+    "contact-intro": "Tell us a little about yourself to receive product updates, early access news and upcoming pre-order information."
+  },
+  "fr": {
+    "headline": "DES YEUX DANS LE CIEL",
+    "coming-soon": "BIENTÔT DISPONIBLE",
+    "signup-title": "SOYEZ PARMI LES PREMIERS",
+    "name": "Nom",
+    "company-name": "Entreprise",
+    "email": "Adresse e-mail",
+    "country": "Pays",
+    "submit": "ACCÉDER EN AVANT-PREMIÈRE →",
+    "sending": "ENVOI EN COURS…",
+    "success": "Merci — vous êtes sur la liste. Nous vous tiendrons au courant.",
+    "form-error": "Votre demande n’a pas pu être envoyée. Vos informations sont conservées ; veuillez réessayer dans un instant.",
+    "form-network": "Nous n’avons pas pu confirmer l’envoi. Vérifiez votre connexion et réessayez dans un instant.",
+    "form-rate-limit": "Trop de tentatives. Patientez un instant avant de réessayer.",
+    "launch-title": "DISPONIBLE AU 1ER TRIMESTRE 2027",
+    "launch-copy": "Recevez des actualités exclusives, un accès anticipé et des informations sur les prochaines précommandes.",
+    "nav-about": "À PROPOS",
+    "nav-skymind": "SKYMIND",
+    "nav-contact": "CONTACT",
+    "hero-discover": "Découvrir XAerova",
+    "about-title": "À propos",
+    "about-lead": "Mieux voir les lieux qui comptent.",
+    "about-copy": "XAerova développe des stations d’accueil pour drones et des outils accessibles depuis un navigateur, afin de rendre l’observation aérienne plus pratique pour les équipes sur le terrain.",
+    "about-docks": "Une station d’accueil donne au drone une base pour décoller, revenir, atterrir et se recharger. Nous associons ce matériel à une interface simple pour les opérations à distance.",
+    "about-uses": "De l’agriculture au suivi de sites, en passant par l’inspection d’infrastructures et la protection de la nature, nous voulons aider chacun à mieux voir et à prendre des décisions éclairées.",
+    "mission-title": "NOTRE MISSION",
+    "mission-copy": "Rendre l’observation aérienne plus accessible, plus simple à gérer et utile au quotidien.",
+    "product-kicker": "LE PRODUIT",
+    "product-lead": "Votre drone. Sa station. Une expérience connectée.",
+    "product-copy": "SkyMind réunit la station d’accueil et la plateforme d’opérations à distance de XAerova. Le système est en développement pour relier le décollage à distance, la vidéo en direct et le retour à la station depuis un navigateur, avec un atterrissage assisté par IA et une recharge entre les missions.",
+    "feature-dock-title": "La station",
+    "feature-dock-copy": "Une base dédiée, conçue pour abriter, aligner et recharger le drone entre les vols.",
+    "feature-browser-title": "Le navigateur",
+    "feature-browser-copy": "Une interface connectée pour la vidéo en direct, l’état du site et les opérations de vol à distance, accessible depuis un ordinateur portable.",
+    "feature-return-title": "Le retour",
+    "feature-return-copy": "Un atterrissage assisté par IA et un retour à la station coordonné, conçus pour préparer le drone à sa prochaine mission.",
+    "cert-title": "Certifications",
+    "cert-copy": "Contactez l’équipe XAerova pour échanger sur la certification du produit et la documentation nécessaire à votre projet.",
+    "cert-link": "Échanger avec notre équipe",
+    "contact-kicker": "CONTACT",
+    "contact-intro": "Présentez-vous en quelques mots pour recevoir les actualités du produit, les informations sur l’accès anticipé et les prochaines précommandes."
+  }
+};
     function updateThemeButton() {
       const button = document.getElementById('themeToggle');
       if (!button) return;
@@ -812,6 +973,16 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       if (event.key === 'xaerova-theme') setTheme(event.newValue, false);
     });
 
+    function updateNavigationLabels() {
+      const french = document.documentElement.lang === 'fr';
+      const button = document.getElementById('mobileMenuToggle');
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-label', french
+        ? (open ? 'Fermer le menu' : 'Ouvrir le menu')
+        : (open ? 'Close navigation menu' : 'Open navigation menu'));
+      document.getElementById('mainNavigation').setAttribute('aria-label', french ? 'Navigation principale' : 'Main navigation');
+    }
+
     function setLanguage(lang) {
       const selected = translations[lang] ? lang : "en";
       document.documentElement.lang = selected;
@@ -826,6 +997,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         button.setAttribute("aria-pressed", String(selected === code));
       }
       updateThemeButton();
+      updateNavigationLabels();
       updateSignupState();
     }
     (() => {
@@ -834,77 +1006,29 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       setLanguage(savedLanguage);
       const mobileButton = document.getElementById("mobileMenuToggle");
       const navigation = document.getElementById("mainNavigation");
-      const dropdown = document.getElementById("useCasesDropdown");
-      const dropdownButton = document.getElementById("useCasesButton");
-      const hoverNavigation = matchMedia('(min-width: 761px) and (hover: hover) and (pointer: fine)');
-      let dropdownHovered = false;
-      let dropdownKeyboard = false;
-      let dropdownPointer = '';
+      const mobileLayout = matchMedia('(max-width: 760px)');
 
       function menuOpen(open) {
         navigation.classList.toggle("mobile-open", open);
         mobileButton.classList.toggle("active", open);
         mobileButton.setAttribute("aria-expanded", String(open));
-        mobileButton.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
-        if (!open) dropdownOpen(false);
-      }
-      function dropdownOpen(open, keyboard = false) {
-        dropdown.classList.toggle("open", open);
-        dropdownButton.setAttribute("aria-expanded", String(open));
-        if (!open) dropdownKeyboard = false;
-        else if (keyboard) dropdownKeyboard = true;
+        updateNavigationLabels();
       }
       mobileButton.addEventListener("click", () => menuOpen(!navigation.classList.contains("mobile-open")));
-
-      // The whole dropdown is one hover region, including the options below it.
-      dropdown.addEventListener('pointerenter', event => {
-        if (!hoverNavigation.matches || event.pointerType !== 'mouse') return;
-        dropdownHovered = true;
-        dropdownOpen(true);
-      });
-      dropdown.addEventListener('pointerleave', event => {
-        if (event.pointerType !== 'mouse') return;
-        dropdownHovered = false;
-        if (!dropdownKeyboard || !dropdown.contains(document.activeElement)) dropdownOpen(false);
-      });
-      dropdownButton.addEventListener('pointerdown', event => { dropdownPointer = event.pointerType; });
-      dropdownButton.addEventListener('click', event => {
-        const keyboard = event.detail === 0;
-        const mouse = (event.pointerType || dropdownPointer) === 'mouse';
-        // A mouse click must not close a menu that has just opened on hover.
-        if (hoverNavigation.matches && mouse && !keyboard) dropdownOpen(true);
-        else dropdownOpen(!dropdown.classList.contains('open'), keyboard);
-      });
-      dropdownButton.addEventListener('keydown', event => {
-        if (event.key !== 'ArrowDown') return;
-        event.preventDefault();
-        dropdownOpen(true, true);
-        dropdown.querySelector('.dropdown-menu a').focus();
-      });
-      dropdown.addEventListener('keydown', event => {
-        if (event.key === 'Tab' && dropdown.classList.contains('open')) dropdownKeyboard = true;
-      });
-      dropdown.addEventListener('focusout', event => {
-        if (!dropdown.contains(event.relatedTarget) && !dropdownHovered) dropdownOpen(false);
-      });
-      const resetDropdownHover = () => {
-        dropdownHovered = false;
-        dropdownOpen(false);
-      };
-      if (hoverNavigation.addEventListener) hoverNavigation.addEventListener('change', resetDropdownHover);
-      else hoverNavigation.addListener(resetDropdownHover);
-      navigation.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
-        menuOpen(false); dropdownOpen(false);
-      }));
+      navigation.querySelectorAll("a").forEach(link => link.addEventListener("click", () => menuOpen(false)));
+      document.querySelector('.brand').addEventListener('click', () => menuOpen(false));
       document.addEventListener("click", event => {
         if (!navigation.contains(event.target) && !mobileButton.contains(event.target)) menuOpen(false);
-        if (!dropdown.contains(event.target)) dropdownOpen(false);
       });
       document.addEventListener("keydown", event => {
-        if (event.key !== "Escape") return;
-        if (dropdown.classList.contains("open")) { dropdownOpen(false); dropdownButton.focus(); }
-        else if (navigation.classList.contains("mobile-open")) { menuOpen(false); mobileButton.focus(); }
+        if (event.key === "Escape" && navigation.classList.contains("mobile-open")) {
+          menuOpen(false);
+          mobileButton.focus();
+        }
       });
+      const layoutChanged = () => { if (!mobileLayout.matches) menuOpen(false); };
+      if (mobileLayout.addEventListener) mobileLayout.addEventListener('change', layoutChanged);
+      else mobileLayout.addListener(layoutChanged);
     })();
 
     function updateSignupState() {
@@ -1438,8 +1562,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 })();
 
 
-    // The supplied 3.2-second logo film, embedded as its original 96 frames.
-    // A transparent frame atlas avoids video controls, autoplay rules and black boxes.
+    // Original 96 logo frames, played at 2x speed on every pointer hover.
     (() => {
       const brand = document.querySelector('.brand');
       const canvas = document.getElementById('brandMotion');
@@ -1448,22 +1571,17 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       if (!context) return;
 
       const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
-      const storageKey = 'xaerova-logo-hover-played-v1';
-      let consumed = false;
-      try { consumed = sessionStorage.getItem(storageKey) === '1'; } catch (_) {}
-      brand.dataset.logoMotion = consumed ? 'played' : 'ready';
-      if (consumed) return;
-
+      brand.dataset.logoMotion = 'ready';
       const frameWidth = 324, frameHeight = 96, columns = 12;
-      const frameCount = 96, framesPerSecond = 30;
-      const duration = frameCount / framesPerSecond * 1000;
+      const frameCount = 96, framesPerSecond = 30, playbackRate = 2;
+      const duration = frameCount / framesPerSecond * 1000 / playbackRate;
       const atlas = new Image();
       atlas.decoding = 'async';
       let animationFrame = 0;
       let currentFrame = -1;
       let startedAt = 0;
       let loading = null;
-      let active = false;
+      let playRequest = 0;
 
       function loadFrames() {
         if (!loading) {
@@ -1477,11 +1595,12 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       }
 
       function restoreLogo() {
+        playRequest++; // Also invalidate a pending image decode or an older hover.
         if (animationFrame) cancelAnimationFrame(animationFrame);
         animationFrame = 0;
-        active = false;
+        currentFrame = -1;
         brand.classList.remove('brand-is-animating');
-        brand.dataset.logoMotion = consumed ? 'played' : 'ready';
+        brand.dataset.logoMotion = 'ready';
         context.clearRect(0, 0, frameWidth, frameHeight);
       }
 
@@ -1500,38 +1619,36 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           restoreLogo();
           return;
         }
-        const index = Math.min(frameCount - 1, Math.floor(elapsed * framesPerSecond / 1000));
+        const index = Math.min(frameCount - 1, Math.floor(elapsed * framesPerSecond * playbackRate / 1000));
         if (index !== currentFrame) drawFrame(index);
         animationFrame = requestAnimationFrame(tick);
       }
 
-      async function firstHover(event) {
+      async function playOnHover(event) {
         // Touch has no hover; the home link keeps its ordinary tap behavior.
-        if (event.pointerType === 'touch' || event.buttons || consumed || motionPreference.matches) return;
-        consumed = true; // Lock synchronously so rapid pointer re-entry cannot queue a replay.
+        if (event.pointerType === 'touch' || event.buttons || motionPreference.matches) return;
+        restoreLogo();
+        const request = playRequest;
         brand.dataset.logoMotion = 'loading';
         try {
           await loadFrames();
+          if (request !== playRequest) return;
           if (motionPreference.matches || document.hidden) {
-            consumed = false;
             restoreLogo();
             return;
           }
           drawFrame(0);
           startedAt = performance.now();
-          active = true;
           brand.classList.add('brand-is-animating');
           brand.dataset.logoMotion = 'playing';
-          // Persist only once frames are ready and playback actually begins.
-          try { sessionStorage.setItem(storageKey, '1'); } catch (_) {}
           animationFrame = requestAnimationFrame(tick);
         } catch (_) {
-          restoreLogo(); // A failed decode never hides the existing static logo.
+          if (request === playRequest) restoreLogo();
         }
       }
 
-      brand.addEventListener('pointerenter', firstHover, { passive: true });
-      const preferenceChanged = () => { if (motionPreference.matches && active) restoreLogo(); };
+      brand.addEventListener('pointerenter', playOnHover, { passive: true });
+      const preferenceChanged = () => { if (motionPreference.matches) restoreLogo(); };
       if (motionPreference.addEventListener) motionPreference.addEventListener('change', preferenceChanged);
       else motionPreference.addListener(preferenceChanged);
       addEventListener('pagehide', restoreLogo);
@@ -1540,4 +1657,5 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   </script>
 </body>
 </html>
+
 
