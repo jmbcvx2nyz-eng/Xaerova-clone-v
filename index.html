@@ -17,7 +17,7 @@
       let theme = 'dark';
       try { if (localStorage.getItem('xaerova-theme') === 'light') theme = 'light'; } catch (_) {}
       document.documentElement.dataset.theme = theme;
-      document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#f3eee5' : '#01060b';
+      document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#f2f1ed' : '#01060b';
     })();
   </script>
   <style id="page-styles">
@@ -362,43 +362,43 @@
     .theme-toggle svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
     .theme-toggle .theme-moon { display: none; }
     html[data-theme="light"] {
-      --blue: #786447;
-      --cyan: #7b6648;
+      --blue: #716c62;
+      --cyan: #706a60;
       --background-opacity: .92;
       color-scheme: light;
-      background: #f3eee5;
+      background: #f2f1ed;
     }
-    html[data-theme="light"] body { color: #302d28; background: #f3eee5; }
-    html[data-theme="light"] #earth-background { background: #f3eee5; }
-    html[data-theme="light"] .topbar { background: rgba(250,247,241,.95); border-bottom-color: #d8cfc1; }
+    html[data-theme="light"] body { color: #2f2e2b; background: #f2f1ed; }
+    html[data-theme="light"] #earth-background { background: #f2f1ed; }
+    html[data-theme="light"] .topbar { background: rgba(249,248,245,.96); border-bottom-color: #d4d0c8; }
     html[data-theme="light"] .brand img { filter: invert(1); }
-    html[data-theme="light"] .nav-links { color: #524b41; }
-    html[data-theme="light"] .dropdown-menu { background: rgba(252,249,243,.98); border-color: #d8cfc1; box-shadow: 0 12px 30px rgba(73,56,34,.12); }
-    html[data-theme="light"] .dropdown-menu a { color: #524b41; }
-    html[data-theme="light"] .dropdown-menu a:hover { color: #5c482e; background: rgba(158,129,88,.13); }
-    html[data-theme="light"] .language-switch { border-color: #c9bdab; }
-    html[data-theme="light"] .language-switch button { color: #62574a; }
+    html[data-theme="light"] .nav-links { color: #514e48; }
+    html[data-theme="light"] .dropdown-menu { background: rgba(251,250,247,.98); border-color: #d4d0c8; box-shadow: 0 12px 30px rgba(64,60,53,.12); }
+    html[data-theme="light"] .dropdown-menu a { color: #514e48; }
+    html[data-theme="light"] .dropdown-menu a:hover { color: #49443c; background: rgba(133,126,115,.13); }
+    html[data-theme="light"] .language-switch { border-color: #c7c2b8; }
+    html[data-theme="light"] .language-switch button { color: #605b53; }
     html[data-theme="light"] .language-switch button.active { color: #fff; }
-    html[data-theme="light"] .theme-toggle { color: #665642; background: rgba(154,128,93,.08); border-color: #c9bdab; }
-    html[data-theme="light"] .theme-toggle:hover { color: #423423; border-color: #8a7353; background: rgba(154,128,93,.16); }
+    html[data-theme="light"] .theme-toggle { color: #645f56; background: rgba(132,125,114,.08); border-color: #c7c2b8; }
+    html[data-theme="light"] .theme-toggle:hover { color: #47423b; border-color: #8a8276; background: rgba(132,125,114,.16); }
     html[data-theme="light"] .theme-toggle .theme-sun { display: none; }
     html[data-theme="light"] .theme-toggle .theme-moon { display: block; }
     html[data-theme="light"] h1 { text-shadow: none; }
-    html[data-theme="light"] .coming-soon { color: #6d6152; }
-    html[data-theme="light"] .availability { color: #716555; }
-    html[data-theme="light"] .availability::before { background: #92754c; box-shadow: 0 0 10px rgba(146,117,76,.4); animation-name: signal-breathe-light; }
+    html[data-theme="light"] .coming-soon { color: #68645d; }
+    html[data-theme="light"] .availability { color: #6f6a61; }
+    html[data-theme="light"] .availability::before { background: #898072; box-shadow: 0 0 10px rgba(132,124,110,.4); animation-name: signal-breathe-light; }
     @keyframes signal-breathe-light {
-      0%, 100% { opacity: .4; box-shadow: 0 0 4px rgba(146,117,76,.2); }
-      50% { opacity: 1; box-shadow: 0 0 13px rgba(146,117,76,.55); }
+      0%, 100% { opacity: .4; box-shadow: 0 0 4px rgba(132,124,110,.2); }
+      50% { opacity: 1; box-shadow: 0 0 13px rgba(132,124,110,.55); }
     }
     @media (max-width: 760px) {
       .right-tools { gap: 8px; }
-      html[data-theme="light"] .mobile-menu-toggle { border-color: #c9bdab; background: rgba(154,128,93,.08); }
-      html[data-theme="light"] .mobile-menu-toggle span { background: #524b41; }
-      html[data-theme="light"] .nav-links { background: rgba(250,247,241,.98); border-bottom-color: #d8cfc1; box-shadow: 0 12px 25px rgba(73,56,34,.12); }
+      html[data-theme="light"] .mobile-menu-toggle { border-color: #c7c2b8; background: rgba(132,125,114,.08); }
+      html[data-theme="light"] .mobile-menu-toggle span { background: #514e48; }
+      html[data-theme="light"] .nav-links { background: rgba(249,248,245,.98); border-bottom-color: #d4d0c8; box-shadow: 0 12px 25px rgba(64,60,53,.12); }
       html[data-theme="light"] .nav-links > a,
-      html[data-theme="light"] .nav-links .dropdown-trigger { border-bottom-color: #e3dace; }
-      html[data-theme="light"] .dropdown-menu { background: rgba(154,128,93,.08); box-shadow: none; }
+      html[data-theme="light"] .nav-links .dropdown-trigger { border-bottom-color: #e0dcd4; }
+      html[data-theme="light"] .dropdown-menu { background: rgba(132,125,114,.08); box-shadow: none; }
     }
     @media (max-width: 300px) {
       .right-tools { gap: 6px; }
@@ -492,22 +492,22 @@
     }
     html[data-theme="light"] .signup h2,
     html[data-theme="light"] .launch h2 {
-      color: #342d23;
+      color: #302e2a;
       font-weight: 600;
       text-shadow: none;
     }
     html[data-theme="light"] .signup-form {
-      background: rgba(250,247,241,.91);
-      border-color: #cfc1ad;
-      box-shadow: 0 12px 40px rgba(83,64,37,.10), inset 0 1px 0 rgba(255,255,255,.7);
+      background: rgba(249,248,245,.91);
+      border-color: #cec9bf;
+      box-shadow: 0 12px 40px rgba(70,65,56,.10), inset 0 1px 0 rgba(255,255,255,.7);
     }
-    html[data-theme="light"] .signup-form label { color: #51483b; }
-    html[data-theme="light"] .signup-form input { color: #302d28; border-color: #c5b8a5; background: #fffdf8; }
+    html[data-theme="light"] .signup-form label { color: #514d45; }
+    html[data-theme="light"] .signup-form input { color: #2f2e2b; border-color: #c5bfb3; background: #fffefa; }
     html[data-theme="light"] .signup-form input:focus { border-color: var(--cyan); }
-    html[data-theme="light"] .submit-button { background: #786447; }
-    html[data-theme="light"] .submit-button:hover { background: #625036; }
+    html[data-theme="light"] .submit-button { background: #716c62; }
+    html[data-theme="light"] .submit-button:hover { background: #5e594f; }
     html[data-theme="light"] .form-message,
-    html[data-theme="light"] .launch p { color: #51483b; }
+    html[data-theme="light"] .launch p { color: #514d45; }
     @media (max-width: 760px) {
       .signup { width: 100%; max-width: 480px; margin-top: 34px; }
       .signup h2 { font-size: 23px; margin-bottom: 12px; }
@@ -705,8 +705,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <label for="fullName" data-i18n="name">Name</label>
         <input id="fullName" name="Name" type="text" autocomplete="name" required>
 
-        <label for="companyName" data-i18n="company-name">Company name</label>
-        <input id="companyName" name="Company name" type="text" autocomplete="organization" required>
+        <label for="companyName" data-i18n="company-name">Company</label>
+        <input id="companyName" name="Company" type="text" autocomplete="organization" required>
 
         <label for="email" data-i18n="email">Email address</label>
         <input id="email" name="email" type="email" autocomplete="email" required>
@@ -734,7 +734,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         "nav-security": "SECURITY & DEFENSE", "nav-nature": "NATURE PROTECTION",
         "headline": "EYES IN THE SKY", "coming-soon": "COMING SOON",
         "signup-title": "BE AMONG THE FIRST",
-        "name": "Name", "company-name": "Company name",
+        "name": "Name", "company-name": "Company",
         "email": "Email address", "country": "Country",
         "submit": "GET EARLY ACCESS →", "sending": "SENDING…",
         "success": "Thank you — you’re on the list. We’ll keep you updated.",
@@ -750,7 +750,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         "nav-security": "SÉCURITÉ & DÉFENSE", "nav-nature": "PROTECTION DE LA NATURE",
         "headline": "DES YEUX DANS LE CIEL", "coming-soon": "BIENTÔT DISPONIBLE",
         "signup-title": "SOYEZ PARMI LES PREMIERS",
-        "name": "Nom", "company-name": "Nom de l’entreprise",
+        "name": "Nom", "company-name": "Entreprise",
         "email": "Adresse e-mail", "country": "Pays",
         "submit": "ACCÉDER EN AVANT-PREMIÈRE →", "sending": "ENVOI EN COURS…",
         "success": "Merci — vous êtes sur la liste. Nous vous tiendrons au courant.",
@@ -777,7 +777,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       const selected = theme === 'light' ? 'light' : 'dark';
       document.documentElement.dataset.theme = selected;
       document.querySelector('meta[name="theme-color"]').content =
-        selected === 'light' ? '#f3eee5' : '#01060b';
+        selected === 'light' ? '#f2f1ed' : '#01060b';
       if (remember) {
         try { localStorage.setItem('xaerova-theme', selected); } catch (_) {}
       }
@@ -817,18 +817,63 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       const navigation = document.getElementById("mainNavigation");
       const dropdown = document.getElementById("useCasesDropdown");
       const dropdownButton = document.getElementById("useCasesButton");
+      const hoverNavigation = matchMedia('(min-width: 761px) and (hover: hover) and (pointer: fine)');
+      let dropdownHovered = false;
+      let dropdownKeyboard = false;
+      let dropdownPointer = '';
+
       function menuOpen(open) {
         navigation.classList.toggle("mobile-open", open);
         mobileButton.classList.toggle("active", open);
         mobileButton.setAttribute("aria-expanded", String(open));
         mobileButton.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+        if (!open) dropdownOpen(false);
       }
-      function dropdownOpen(open) {
+      function dropdownOpen(open, keyboard = false) {
         dropdown.classList.toggle("open", open);
         dropdownButton.setAttribute("aria-expanded", String(open));
+        if (!open) dropdownKeyboard = false;
+        else if (keyboard) dropdownKeyboard = true;
       }
       mobileButton.addEventListener("click", () => menuOpen(!navigation.classList.contains("mobile-open")));
-      dropdownButton.addEventListener("click", () => dropdownOpen(!dropdown.classList.contains("open")));
+
+      // The whole dropdown is one hover region, including the options below it.
+      dropdown.addEventListener('pointerenter', event => {
+        if (!hoverNavigation.matches || event.pointerType !== 'mouse') return;
+        dropdownHovered = true;
+        dropdownOpen(true);
+      });
+      dropdown.addEventListener('pointerleave', event => {
+        if (event.pointerType !== 'mouse') return;
+        dropdownHovered = false;
+        if (!dropdownKeyboard || !dropdown.contains(document.activeElement)) dropdownOpen(false);
+      });
+      dropdownButton.addEventListener('pointerdown', event => { dropdownPointer = event.pointerType; });
+      dropdownButton.addEventListener('click', event => {
+        const keyboard = event.detail === 0;
+        const mouse = (event.pointerType || dropdownPointer) === 'mouse';
+        // A mouse click must not close a menu that has just opened on hover.
+        if (hoverNavigation.matches && mouse && !keyboard) dropdownOpen(true);
+        else dropdownOpen(!dropdown.classList.contains('open'), keyboard);
+      });
+      dropdownButton.addEventListener('keydown', event => {
+        if (event.key !== 'ArrowDown') return;
+        event.preventDefault();
+        dropdownOpen(true, true);
+        dropdown.querySelector('.dropdown-menu a').focus();
+      });
+      dropdown.addEventListener('keydown', event => {
+        if (event.key === 'Tab' && dropdown.classList.contains('open')) dropdownKeyboard = true;
+      });
+      dropdown.addEventListener('focusout', event => {
+        if (!dropdown.contains(event.relatedTarget) && !dropdownHovered) dropdownOpen(false);
+      });
+      const resetDropdownHover = () => {
+        dropdownHovered = false;
+        dropdownOpen(false);
+      };
+      if (hoverNavigation.addEventListener) hoverNavigation.addEventListener('change', resetDropdownHover);
+      else hoverNavigation.addListener(resetDropdownHover);
       navigation.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
         menuOpen(false); dropdownOpen(false);
       }));
@@ -874,10 +919,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 
         // Capture every field before locking the inputs while the request runs.
         const payload = Object.fromEntries(new FormData(form));
-        for (const key of ['Name', 'Company name', 'email', 'Country']) {
+        for (const key of ['Name', 'Company', 'email', 'Country']) {
           payload[key] = String(payload[key] || '').trim();
         }
-        if (!payload['Name'] || !payload['Company name'] || !payload.email || !payload.Country) {
+        if (!payload['Name'] || !payload['Company'] || !payload.email || !payload.Country) {
           form.dataset.state = 'error';
           form.dataset.message = 'form-error';
           updateSignupState();
@@ -1079,9 +1124,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           const red = 142 + coast * 66 + relief + shelf + seaDetail;
           const green = 164 + coast * 18 + relief * .90 + shelf + seaDetail;
           const blue = 170 - coast * 32 + relief * .72 + shelf * .75 + seaDetail;
-          // Keep soft sand-coloured land and muted blue water, with visible terrain detail.
+          // Preserve gentle stone and blue hues while keeping the relief and coastlines clear.
           const grey = red * .2126 + green * .7152 + blue * .0722;
-          const saturation = .72;
+          const saturation = .38;
           daySurface[offset] = grey + (red - grey) * saturation;
           daySurface[offset + 1] = grey + (green - grey) * saturation;
           daySurface[offset + 2] = grey + (blue - grey) * saturation;
@@ -1114,11 +1159,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       const scale = width / 1365;
       const gradient = context.createLinearGradient(0, 0, width, 0);
       if (lightMode) {
-        gradient.addColorStop(0, 'rgba(228,224,212,' + strength * .40 + ')');
-        gradient.addColorStop(.25, 'rgba(248,244,232,' + strength * .74 + ')');
+        gradient.addColorStop(0, 'rgba(226,225,220,' + strength * .40 + ')');
+        gradient.addColorStop(.25, 'rgba(247,246,241,' + strength * .74 + ')');
         gradient.addColorStop(.60, 'rgba(255,255,251,' + strength + ')');
-        gradient.addColorStop(.83, 'rgba(255,252,240,' + strength * .96 + ')');
-        gradient.addColorStop(1, 'rgba(241,237,223,' + strength * .70 + ')');
+        gradient.addColorStop(.83, 'rgba(255,254,248,' + strength * .96 + ')');
+        gradient.addColorStop(1, 'rgba(239,238,232,' + strength * .70 + ')');
       } else {
       gradient.addColorStop(0, 'rgba(8,143,181,' + strength * .32 + ')');
       gradient.addColorStop(.25, 'rgba(61,201,248,' + strength * .69 + ')');
@@ -1210,16 +1255,16 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       dayStars = [];
       if (lightMode) {
         buildDaylightTexture();
-        // Soft warm daylight with a sparse field of pale greige cross-shaped stars.
+        // Soft ivory daylight with a sparse field of pale greige cross-shaped stars.
         const daySky = skyCtx.createLinearGradient(0, 0, 0, height);
-        daySky.addColorStop(0, '#f1eadf');
-        daySky.addColorStop(.46, '#f7f2e9');
-        daySky.addColorStop(1, '#e6e0d4');
+        daySky.addColorStop(0, '#f0efec');
+        daySky.addColorStop(.46, '#f6f5f2');
+        daySky.addColorStop(1, '#e7e5e1');
         skyCtx.fillStyle = daySky; skyCtx.fillRect(0, 0, width, height);
         const sunHaze = skyCtx.createRadialGradient(width * .66, height * .43, 0, width * .66, height * .43, width * .65);
-        sunHaze.addColorStop(0, 'rgba(255,252,245,.25)');
-        sunHaze.addColorStop(.40, 'rgba(255,250,237,.06)');
-        sunHaze.addColorStop(1, 'rgba(255,250,237,0)');
+        sunHaze.addColorStop(0, 'rgba(255,254,251,.25)');
+        sunHaze.addColorStop(.40, 'rgba(255,253,247,.06)');
+        sunHaze.addColorStop(1, 'rgba(255,253,247,0)');
         skyCtx.fillStyle = sunHaze; skyCtx.fillRect(0, 0, width, height);
         let dayStarSeed = 89237;
         const dayStarRandom = () => { dayStarSeed = (Math.imul(dayStarSeed, 1103515245) + 12345) >>> 0; return dayStarSeed / 4294967296; };
@@ -1305,9 +1350,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           const daylight = (.92 + map.shade[i] * .08) * (1 - cover * .05);
           const cloudWhite = ease(.18, .84, cover) * .54;
           const clear = 1 - cloudWhite, haze = fog * .24, ground = 1 - haze;
-          output[target] = (red * daylight * clear + 253 * cloudWhite) * ground + 244 * haze;
+          output[target] = (red * daylight * clear + 252 * cloudWhite) * ground + 243 * haze;
           output[target + 1] = (green * daylight * clear + 251 * cloudWhite) * ground + 242 * haze;
-          output[target + 2] = (blue * daylight * clear + 246 * cloudWhite) * ground + 233 * haze;
+          output[target + 2] = (blue * daylight * clear + 248 * cloudWhite) * ground + 238 * haze;
           continue;
         }
         const shine = .57 + cityPulseX[x0] ** 2 * .66 + cityPulseY[row / MW] ** 2 * .37;
