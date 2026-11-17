@@ -17,7 +17,7 @@
       let theme = 'dark';
       try { if (localStorage.getItem('xaerova-theme') === 'light') theme = 'light'; } catch (_) {}
       document.documentElement.dataset.theme = theme;
-      document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#ededed' : '#01060b';
+      document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#f3eee5' : '#01060b';
     })();
   </script>
   <style id="page-styles">
@@ -102,9 +102,16 @@
       background: transparent;
       cursor: pointer;
       font: inherit;
+      line-height: 1;
       letter-spacing: inherit;
     }
-    .dropdown-arrow { font-size: 13px; transition: transform .2s ease; }
+    .dropdown-arrow {
+      display: block;
+      width: 9px;
+      height: 9px;
+      flex: 0 0 9px;
+      transition: transform .2s ease;
+    }
     .dropdown-menu {
       display: none;
       position: absolute;
@@ -355,43 +362,43 @@
     .theme-toggle svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
     .theme-toggle .theme-moon { display: none; }
     html[data-theme="light"] {
-      --blue: #626262;
-      --cyan: #505050;
+      --blue: #786447;
+      --cyan: #7b6648;
       --background-opacity: .92;
       color-scheme: light;
-      background: #ededed;
+      background: #f3eee5;
     }
-    html[data-theme="light"] body { color: #292929; background: #ededed; }
-    html[data-theme="light"] #earth-background { background: #ededed; }
-    html[data-theme="light"] .topbar { background: rgba(248,248,248,.96); border-bottom-color: #d1d1d1; }
+    html[data-theme="light"] body { color: #302d28; background: #f3eee5; }
+    html[data-theme="light"] #earth-background { background: #f3eee5; }
+    html[data-theme="light"] .topbar { background: rgba(250,247,241,.95); border-bottom-color: #d8cfc1; }
     html[data-theme="light"] .brand img { filter: invert(1); }
-    html[data-theme="light"] .nav-links { color: #4b4b4b; }
-    html[data-theme="light"] .dropdown-menu { background: rgba(250,250,250,.98); border-color: #d1d1d1; box-shadow: 0 12px 30px rgba(50,50,50,.12); }
-    html[data-theme="light"] .dropdown-menu a { color: #4b4b4b; }
-    html[data-theme="light"] .dropdown-menu a:hover { color: #333333; background: rgba(110,110,110,.10); }
-    html[data-theme="light"] .language-switch { border-color: #bfbfbf; }
-    html[data-theme="light"] .language-switch button { color: #555555; }
+    html[data-theme="light"] .nav-links { color: #524b41; }
+    html[data-theme="light"] .dropdown-menu { background: rgba(252,249,243,.98); border-color: #d8cfc1; box-shadow: 0 12px 30px rgba(73,56,34,.12); }
+    html[data-theme="light"] .dropdown-menu a { color: #524b41; }
+    html[data-theme="light"] .dropdown-menu a:hover { color: #5c482e; background: rgba(158,129,88,.13); }
+    html[data-theme="light"] .language-switch { border-color: #c9bdab; }
+    html[data-theme="light"] .language-switch button { color: #62574a; }
     html[data-theme="light"] .language-switch button.active { color: #fff; }
-    html[data-theme="light"] .theme-toggle { color: #555555; background: rgba(110,110,110,.08); border-color: #bfbfbf; }
-    html[data-theme="light"] .theme-toggle:hover { color: #333333; border-color: #888888; background: rgba(110,110,110,.16); }
+    html[data-theme="light"] .theme-toggle { color: #665642; background: rgba(154,128,93,.08); border-color: #c9bdab; }
+    html[data-theme="light"] .theme-toggle:hover { color: #423423; border-color: #8a7353; background: rgba(154,128,93,.16); }
     html[data-theme="light"] .theme-toggle .theme-sun { display: none; }
     html[data-theme="light"] .theme-toggle .theme-moon { display: block; }
     html[data-theme="light"] h1 { text-shadow: none; }
-    html[data-theme="light"] .coming-soon { color: #626262; }
-    html[data-theme="light"] .availability { color: #666666; }
-    html[data-theme="light"] .availability::before { background: #777777; box-shadow: 0 0 10px rgba(119,119,119,.4); animation-name: signal-breathe-light; }
+    html[data-theme="light"] .coming-soon { color: #6d6152; }
+    html[data-theme="light"] .availability { color: #716555; }
+    html[data-theme="light"] .availability::before { background: #92754c; box-shadow: 0 0 10px rgba(146,117,76,.4); animation-name: signal-breathe-light; }
     @keyframes signal-breathe-light {
-      0%, 100% { opacity: .4; box-shadow: 0 0 4px rgba(119,119,119,.2); }
-      50% { opacity: 1; box-shadow: 0 0 13px rgba(119,119,119,.55); }
+      0%, 100% { opacity: .4; box-shadow: 0 0 4px rgba(146,117,76,.2); }
+      50% { opacity: 1; box-shadow: 0 0 13px rgba(146,117,76,.55); }
     }
     @media (max-width: 760px) {
       .right-tools { gap: 8px; }
-      html[data-theme="light"] .mobile-menu-toggle { border-color: #bfbfbf; background: rgba(110,110,110,.08); }
-      html[data-theme="light"] .mobile-menu-toggle span { background: #4b4b4b; }
-      html[data-theme="light"] .nav-links { background: rgba(248,248,248,.98); border-bottom-color: #d1d1d1; box-shadow: 0 12px 25px rgba(50,50,50,.12); }
+      html[data-theme="light"] .mobile-menu-toggle { border-color: #c9bdab; background: rgba(154,128,93,.08); }
+      html[data-theme="light"] .mobile-menu-toggle span { background: #524b41; }
+      html[data-theme="light"] .nav-links { background: rgba(250,247,241,.98); border-bottom-color: #d8cfc1; box-shadow: 0 12px 25px rgba(73,56,34,.12); }
       html[data-theme="light"] .nav-links > a,
-      html[data-theme="light"] .nav-links .dropdown-trigger { border-bottom-color: #dedede; }
-      html[data-theme="light"] .dropdown-menu { background: rgba(110,110,110,.08); box-shadow: none; }
+      html[data-theme="light"] .nav-links .dropdown-trigger { border-bottom-color: #e3dace; }
+      html[data-theme="light"] .dropdown-menu { background: rgba(154,128,93,.08); box-shadow: none; }
     }
     @media (max-width: 300px) {
       .right-tools { gap: 6px; }
@@ -485,22 +492,22 @@
     }
     html[data-theme="light"] .signup h2,
     html[data-theme="light"] .launch h2 {
-      color: #292929;
+      color: #342d23;
       font-weight: 600;
       text-shadow: none;
     }
     html[data-theme="light"] .signup-form {
-      background: rgba(250,250,250,.91);
-      border-color: #c6c6c6;
-      box-shadow: 0 12px 40px rgba(50,50,50,.10), inset 0 1px 0 rgba(255,255,255,.7);
+      background: rgba(250,247,241,.91);
+      border-color: #cfc1ad;
+      box-shadow: 0 12px 40px rgba(83,64,37,.10), inset 0 1px 0 rgba(255,255,255,.7);
     }
-    html[data-theme="light"] .signup-form label { color: #4c4c4c; }
-    html[data-theme="light"] .signup-form input { color: #292929; border-color: #bdbdbd; background: #fdfdfd; }
+    html[data-theme="light"] .signup-form label { color: #51483b; }
+    html[data-theme="light"] .signup-form input { color: #302d28; border-color: #c5b8a5; background: #fffdf8; }
     html[data-theme="light"] .signup-form input:focus { border-color: var(--cyan); }
-    html[data-theme="light"] .submit-button { background: #626262; }
-    html[data-theme="light"] .submit-button:hover { background: #494949; }
+    html[data-theme="light"] .submit-button { background: #786447; }
+    html[data-theme="light"] .submit-button:hover { background: #625036; }
     html[data-theme="light"] .form-message,
-    html[data-theme="light"] .launch p { color: #4c4c4c; }
+    html[data-theme="light"] .launch p { color: #51483b; }
     @media (max-width: 760px) {
       .signup { width: 100%; max-width: 480px; margin-top: 34px; }
       .signup h2 { font-size: 23px; margin-bottom: 12px; }
@@ -646,7 +653,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <button class="dropdown-trigger" type="button" id="useCasesButton"
           aria-expanded="false" aria-controls="useCasesMenu">
           <span data-i18n="nav-usecases">USE CASES</span>
-          <span class="dropdown-arrow" aria-hidden="true">⌄</span>
+          <svg class="dropdown-arrow" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false">
+            <path d="M2.5 4.25 6 7.75 9.5 4.25" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </button>
         <div class="dropdown-menu" id="useCasesMenu">
           <a href="#early-access" data-i18n="nav-agriculture">Agriculture</a>
@@ -693,11 +702,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="_honey" id="signupHoneypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
-        <label for="firstName" data-i18n="first-name">First name</label>
-        <input id="firstName" name="First name" type="text" autocomplete="given-name" required>
+        <label for="fullName" data-i18n="name">Name</label>
+        <input id="fullName" name="Name" type="text" autocomplete="name" required>
 
-        <label for="lastName" data-i18n="last-name">Last name</label>
-        <input id="lastName" name="Last name" type="text" autocomplete="family-name" required>
+        <label for="companyName" data-i18n="company-name">Company name</label>
+        <input id="companyName" name="Company name" type="text" autocomplete="organization" required>
 
         <label for="email" data-i18n="email">Email address</label>
         <input id="email" name="email" type="email" autocomplete="email" required>
@@ -725,7 +734,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         "nav-security": "SECURITY & DEFENSE", "nav-nature": "NATURE PROTECTION",
         "headline": "EYES IN THE SKY", "coming-soon": "COMING SOON",
         "signup-title": "BE AMONG THE FIRST",
-        "first-name": "First name", "last-name": "Last name",
+        "name": "Name", "company-name": "Company name",
         "email": "Email address", "country": "Country",
         "submit": "GET EARLY ACCESS →", "sending": "SENDING…",
         "success": "Thank you — you’re on the list. We’ll keep you updated.",
@@ -741,7 +750,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         "nav-security": "SÉCURITÉ & DÉFENSE", "nav-nature": "PROTECTION DE LA NATURE",
         "headline": "DES YEUX DANS LE CIEL", "coming-soon": "BIENTÔT DISPONIBLE",
         "signup-title": "SOYEZ PARMI LES PREMIERS",
-        "first-name": "Prénom", "last-name": "Nom",
+        "name": "Nom", "company-name": "Nom de l’entreprise",
         "email": "Adresse e-mail", "country": "Pays",
         "submit": "ACCÉDER EN AVANT-PREMIÈRE →", "sending": "ENVOI EN COURS…",
         "success": "Merci — vous êtes sur la liste. Nous vous tiendrons au courant.",
@@ -768,7 +777,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       const selected = theme === 'light' ? 'light' : 'dark';
       document.documentElement.dataset.theme = selected;
       document.querySelector('meta[name="theme-color"]').content =
-        selected === 'light' ? '#ededed' : '#01060b';
+        selected === 'light' ? '#f3eee5' : '#01060b';
       if (remember) {
         try { localStorage.setItem('xaerova-theme', selected); } catch (_) {}
       }
@@ -865,10 +874,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 
         // Capture every field before locking the inputs while the request runs.
         const payload = Object.fromEntries(new FormData(form));
-        for (const key of ['First name', 'Last name', 'email', 'Country']) {
+        for (const key of ['Name', 'Company name', 'email', 'Country']) {
           payload[key] = String(payload[key] || '').trim();
         }
-        if (!payload['First name'] || !payload['Last name'] || !payload.email || !payload.Country) {
+        if (!payload['Name'] || !payload['Company name'] || !payload.email || !payload.Country) {
           form.dataset.state = 'error';
           form.dataset.message = 'form-error';
           updateSignupState();
@@ -1070,9 +1079,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           const red = 142 + coast * 66 + relief + shelf + seaDetail;
           const green = 164 + coast * 18 + relief * .90 + shelf + seaDetail;
           const blue = 170 - coast * 32 + relief * .72 + shelf * .75 + seaDetail;
-          // Keep the relief and coastlines while removing 92% of the colour.
+          // Keep soft sand-coloured land and muted blue water, with visible terrain detail.
           const grey = red * .2126 + green * .7152 + blue * .0722;
-          const saturation = .08;
+          const saturation = .72;
           daySurface[offset] = grey + (red - grey) * saturation;
           daySurface[offset + 1] = grey + (green - grey) * saturation;
           daySurface[offset + 2] = grey + (blue - grey) * saturation;
@@ -1105,11 +1114,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       const scale = width / 1365;
       const gradient = context.createLinearGradient(0, 0, width, 0);
       if (lightMode) {
-        gradient.addColorStop(0, 'rgba(224,224,224,' + strength * .40 + ')');
-        gradient.addColorStop(.25, 'rgba(246,246,246,' + strength * .74 + ')');
-        gradient.addColorStop(.60, 'rgba(255,255,255,' + strength + ')');
-        gradient.addColorStop(.83, 'rgba(253,253,253,' + strength * .96 + ')');
-        gradient.addColorStop(1, 'rgba(237,237,237,' + strength * .70 + ')');
+        gradient.addColorStop(0, 'rgba(228,224,212,' + strength * .40 + ')');
+        gradient.addColorStop(.25, 'rgba(248,244,232,' + strength * .74 + ')');
+        gradient.addColorStop(.60, 'rgba(255,255,251,' + strength + ')');
+        gradient.addColorStop(.83, 'rgba(255,252,240,' + strength * .96 + ')');
+        gradient.addColorStop(1, 'rgba(241,237,223,' + strength * .70 + ')');
       } else {
       gradient.addColorStop(0, 'rgba(8,143,181,' + strength * .32 + ')');
       gradient.addColorStop(.25, 'rgba(61,201,248,' + strength * .69 + ')');
@@ -1201,23 +1210,23 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       dayStars = [];
       if (lightMode) {
         buildDaylightTexture();
-        // Neutral daylight with gently moving grey plus-shaped stars.
+        // Soft warm daylight with a sparse field of pale greige cross-shaped stars.
         const daySky = skyCtx.createLinearGradient(0, 0, 0, height);
-        daySky.addColorStop(0, '#e8e8e8');
-        daySky.addColorStop(.46, '#f4f4f4');
-        daySky.addColorStop(1, '#dedede');
+        daySky.addColorStop(0, '#f1eadf');
+        daySky.addColorStop(.46, '#f7f2e9');
+        daySky.addColorStop(1, '#e6e0d4');
         skyCtx.fillStyle = daySky; skyCtx.fillRect(0, 0, width, height);
         const sunHaze = skyCtx.createRadialGradient(width * .66, height * .43, 0, width * .66, height * .43, width * .65);
-        sunHaze.addColorStop(0, 'rgba(255,255,255,.25)');
-        sunHaze.addColorStop(.40, 'rgba(255,255,255,.06)');
-        sunHaze.addColorStop(1, 'rgba(255,255,255,0)');
+        sunHaze.addColorStop(0, 'rgba(255,252,245,.25)');
+        sunHaze.addColorStop(.40, 'rgba(255,250,237,.06)');
+        sunHaze.addColorStop(1, 'rgba(255,250,237,0)');
         skyCtx.fillStyle = sunHaze; skyCtx.fillRect(0, 0, width, height);
         let dayStarSeed = 89237;
         const dayStarRandom = () => { dayStarSeed = (Math.imul(dayStarSeed, 1103515245) + 12345) >>> 0; return dayStarSeed / 4294967296; };
-        const total = Math.round(clamp(width * height / 14000, 24, 65));
+        const total = Math.round(clamp(width * height / 42000, 8, 22));
         for (let i = 0; i < total; i++) {
           dayStars.push({ u: .025 + dayStarRandom() * .95, v: .055 + dayStarRandom() * .36,
-            size: 7.5 + dayStarRandom() * 5, phase: dayStarRandom() * TAU,
+            size: 6.5 + dayStarRandom() * 3.5, phase: dayStarRandom() * TAU,
             speed: .85 + dayStarRandom() * .85, drift: .55 + dayStarRandom() * .60,
             sway: .6 + dayStarRandom() * 1.8 });
         }
@@ -1296,9 +1305,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           const daylight = (.92 + map.shade[i] * .08) * (1 - cover * .05);
           const cloudWhite = ease(.18, .84, cover) * .54;
           const clear = 1 - cloudWhite, haze = fog * .24, ground = 1 - haze;
-          output[target] = (red * daylight * clear + 250 * cloudWhite) * ground + 242 * haze;
-          output[target + 1] = (green * daylight * clear + 250 * cloudWhite) * ground + 242 * haze;
-          output[target + 2] = (blue * daylight * clear + 250 * cloudWhite) * ground + 242 * haze;
+          output[target] = (red * daylight * clear + 253 * cloudWhite) * ground + 244 * haze;
+          output[target + 1] = (green * daylight * clear + 251 * cloudWhite) * ground + 242 * haze;
+          output[target + 2] = (blue * daylight * clear + 246 * cloudWhite) * ground + 233 * haze;
           continue;
         }
         const shine = .57 + cityPulseX[x0] ** 2 * .66 + cityPulseY[row / MW] ** 2 * .37;
@@ -1319,8 +1328,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           const x = fract(star.u + elapsed * .00085 * star.drift) * width;
           const y = star.v * height + Math.sin(elapsed * .24 + star.phase) * star.sway;
           const thickness = Math.max(.8, size * .135);
-          ctx.globalAlpha = .20 + pulse * pulse * .50;
-          ctx.fillStyle = '#7b7b7b';
+          ctx.globalAlpha = .22 + pulse * pulse * .43;
+          ctx.fillStyle = '#aaa69e';
           // One path keeps the centre the same shade as both arms.
           ctx.beginPath();
           ctx.rect(x - size / 2, y - thickness / 2, size, thickness);
